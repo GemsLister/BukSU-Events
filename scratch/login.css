@@ -1,0 +1,105 @@
+@font-face {
+    font-family: "Rubik";
+    src: url(../Rubik/static/Rubik-Regular.ttf);
+}
+
+:root{
+    --orange: #ff9800;
+}
+
+.overlayer{
+    position: absolute;
+    background-color: #ff99007e;
+    z-index: 10;
+}
+
+body{
+    font-family: "Rubik";
+}
+
+/* Body background */
+/* .custom-body-bg {
+    position: relative; 
+    background: url("../images/section1_bg.png") fixed no-repeat center;
+    background-size: cover; 
+    height: 74vh;
+    width: 100%;
+}
+
+.custom-body-bg::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: linear-gradient(to right ,#ed4691a4, #5522cca2); 
+    z-index: 1;
+} */
+html body{
+    flex-direction: column;
+    background: linear-gradient(var(--overlay-color), var(--overlay-color)), url(/images/section1_bg.png) no-repeat center;
+    background-size: cover;
+    height: 100vh;
+}
+
+
+header{
+    position: relative;
+    z-index: 2;
+}
+
+figure span{
+    color: var(--orange);
+}
+
+header figure figcaption{
+    font-weight: 600;
+    color: white;
+}
+
+nav li a{
+    text-decoration: none;
+    color: white;
+}
+
+nav ul{
+    list-style: none;
+}
+
+main{
+    
+}
+
+
+@media screen and (min-width: 319px) {
+    .buksu-intrams-fig img{
+        /* height: 20vh; */
+        width: 20vw;
+    }
+}
+
+@media screen and (width > 1440px) {
+    header figure figcaption{
+        font-size: 2rem;
+        font-weight: 800;
+    } 
+
+    header figure img{
+        height: 3.5vh;
+    }
+
+    header figure{
+        align-items: center;
+        margin: 0 0 0 2rem;
+    }
+
+    header nav{
+        margin: 0 2rem 0 0;
+    }
+
+    nav a{
+        font-size: 15px;
+        font-weight: 400;
+    }
+}
