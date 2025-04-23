@@ -1,105 +1,214 @@
 @font-face {
-    font-family: "Rubik";
-    src: url(../Rubik/static/Rubik-Regular.ttf);
+    font-family: "Roboto";
+    src: url(../roboto_static/Roboto-Regular.ttf);
 }
 
 :root{
-    --orange: #ff9800;
+    --linear-pink: rgba(237, 70, 145, 0.623);
+    --linear-purple: rgba(85, 34, 204, 0.733);
+    --orange-peel: #E57930;
+    --carousel-control-btn: #3D37F1;
+    --dark-blue: #242565;
+    --darker-blue: #13133b;
+    --grayish-white: #dfdfdf83;
+    --box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    --gray-font: #C7C7C7;
 }
 
-.overlayer{
-    position: absolute;
-    background-color: #ff99007e;
-    z-index: 10;
-}
-
-body{
-    font-family: "Rubik";
-}
-
-/* Body background */
-/* .custom-body-bg {
-    position: relative; 
-    background: url("../images/section1_bg.png") fixed no-repeat center;
-    background-size: cover; 
-    height: 74vh;
-    width: 100%;
-}
-
-.custom-body-bg::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: linear-gradient(to right ,#ed4691a4, #5522cca2); 
-    z-index: 1;
-} */
 html body{
-    flex-direction: column;
-    background: linear-gradient(var(--overlay-color), var(--overlay-color)), url(/images/section1_bg.png) no-repeat center;
-    background-size: cover;
-    height: 100vh;
+    font-family: "Roboto";
 }
-
 
 header{
-    position: relative;
-    z-index: 2;
+    background-image: linear-gradient(180deg, var(--linear-purple), var(--linear-pink)),
+    url("../images/buksu-image.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
-figure span{
-    color: var(--orange);
-}
-
-header figure figcaption{
-    font-weight: 600;
+figcaption{
     color: white;
 }
 
-nav li a{
-    text-decoration: none;
+figcaption span{
+    color: var(--orange-peel);
+}
+
+.c-img{
+    filter: brightness(0.6);
+}
+
+footer{
+    background-color: var(--dark-blue);
+}
+
+footer .websites i{
     color: white;
 }
 
-nav ul{
-    list-style: none;
-}
-
-main{
-    
-}
-
-
-@media screen and (min-width: 319px) {
-    .buksu-intrams-fig img{
-        /* height: 20vh; */
-        width: 20vw;
+@media screen and (min-width: 319px) and (max-width: 426px) {
+    header{
+        grid-template-rows: 5% 1fr;
+        padding: 3vh 0 0 0;
     }
-}
 
-@media screen and (width > 1440px) {
-    header figure figcaption{
-        font-size: 2rem;
+    header figure:nth-child(1) img{
+        height: 23px;
+        margin: 0 0 0 3.5vw;
+    }
+
+    header figure:nth-child(2) i{
+        font-size: 25px;
+        color: white;
+        margin: 0 3.5vw 0 0;
+    }
+
+    .web-name-and-menu{
+        width: 100vw;
+    }
+
+    .web-name-and-menu figcaption{
+        grid-column: 1;
+        font-weight: 900;
+        font-size: 1.5rem;
+    }
+
+    .c-inner, .c-item, .c-img{
+        height: 50vh;
+        width: 96vw;
+        border-radius: 13px;
+    }
+
+    .c-img{
+        border: 3px solid white;
+        
+    }
+
+    .c-item h3{
         font-weight: 800;
-    } 
-
-    header figure img{
-        height: 3.5vh;
     }
-
-    header figure{
-        align-items: center;
-        margin: 0 0 0 2rem;
-    }
-
-    header nav{
-        margin: 0 2rem 0 0;
-    }
-
-    nav a{
+    
+    .c-item p{
         font-size: 15px;
-        font-weight: 400;
+    }
+
+    /* header section */
+     header section:nth-of-type(1){
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 70vh;
+        width: 90vw;
+    }
+
+    /* main section */
+    main section h1, .card-body{
+        font-weight: 900;
+        color: var(--dark-blue);
+    }
+    
+    /* section 1 */
+    section:nth-of-type(1){
+        padding: 2vh;
+    }
+
+    section:nth-of-type(1) .cards-container .card{
+        box-shadow: var(--box-shadow);
+    }
+
+    section:nth-of-type(1) .cards-container .card-title{
+        font-weight: 700;
+    }
+
+    section:nth-of-type(1) .cards-container .card-img-top{
+        height: 280px;
+    }
+
+    section:nth-of-type(1) .card-body{
+        color: var(--darker-blue);
+    }
+
+    section:nth-of-type(1) .cards-container button{
+        padding: 0.8vh;
+        font-size: 16.6px;
+        width: 15rem;
+        border-radius: 20px;
+    }
+
+    section:nth-of-type(1) .upcoming-events{
+        padding: 2vh 0 2vh 7vw;
+    }
+
+    /* section 2 */
+    section:nth-of-type(2){
+        padding: 1in 0 1in 0;
+        height: 60vh;
+    }
+
+    section:nth-of-type(2) .colleges{
+        padding: 1vh 4vh;
+    }
+
+    .colleges p{
+        text-align: center;
+        font-size: 12px;
+        color: var(--gray-font);
+    }
+
+    /* college department */
+    section:nth-of-type(2) .college-department figure img{
+        height: 75px;
+    }
+
+    /* footer */
+    footer{
+        height: 55vh;
+        color: white;
+    }
+
+    footer figure img{
+        height: 22px;
+    }
+
+    footer figure figcaption{
+        font-weight: 900;
+        font-size: 25px;
+    }
+
+    footer .websites{
+        padding: 2vh 0 0 0;
+    }
+
+    footer .websites i{
+        font-size: 23px;
+    }
+
+    footer h2{
+        font-weight: 600;
+        font-size: 15px;
+    }
+
+    footer p{
+        font-size: 10px;
+    }
+
+    footer .contact h2{
+        padding: 0 0 0 2vw;
+    }
+
+    footer .subscribe{
+        border-radius: 20px;
+        width: 65%;
+    }
+
+    footer .subscribe button{
+        height: 10px;
+        width: 30%;
+    }
+
+    footer .copyrights hr{
+        border: 0.8px solid white;
+        width: 100%;
     }
 }
