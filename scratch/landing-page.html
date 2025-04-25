@@ -10,90 +10,158 @@
 </head>
 <body>
     <header>
-        <div class="upper d-flex justify-content-between p-4">
-            <figure>
-                <figcaption>Logo</figcaption>
-            </figure>
-            <nav>
-                <ul class="nav-lists d-none d-md-flex d-lg-flex">
-                    <li><a href="">Events</a></li>
-                    <li><a href="">Past Events</a></li>
-                    <li><a href="">About Us</a></li>
-                </ul>
-                <figure class="menu-icon d-flex align-items-center gap-2">
-                    <a href=""><i class="fa-solid fa-bars d-sm-none"></i></a>
-                    <button class="btn btn-outline-light login-btn d-none d-md-flex d-lg-flex">Login</button>
+        <div class="upper container p-4">
+            <div class="col">
+                <figure>
+                    <img src="../images/buksu_events_logo.png" alt="">
                 </figure>
-            </nav>
+            </div>
+            <div class="col">
+                <figure>
+                    <nav>
+                        <ul class="nav-lists d-none d-md-flex d-lg-flex">
+                            <li><a href="">Events</a></li>
+                            <li><a href="">Past Events</a></li>
+                            <li><a href="">About Us</a></li>
+                        </ul>
+                        <figure class="menu-icon d-flex align-items-center gap-2">
+                            <a href=""><i class="fa-solid fa-bars d-sm-none"></i></a>
+                            <button class="btn btn-outline-light login-btn d-none d-md-flex d-lg-flex">Login</button>
+                        </figure>
+                    </nav>
+                </figure>
+            </div>
+
+            <div class="col">
+                 <!-- Carousel section -->
+                <section class="d-flex align-items-center justify-content-center">
+                    <div class="carousel-container">
+                        <!-- Web carousel -->
+                        <div id="web-carousel" class="carousel slide w-carousel" data-bs-ride="carousel">
+                            <!-- carousel inner -->
+                            <div class="carousel-inner c-inner"> 
+                                <div class="carousel-item c-item active"> <!-- carousel item 1 -->
+                                    <img src="../images/buksu_intrams.png" class="c-img" alt="slide-1">
+                                    <div class="carousel-caption">
+                                        <h3>BukSU INTRAMURALS</h3>
+                                        <p>Speed. Strength. Spirit</p>
+                                    </div>
+                                </div>
+                                        
+                                <div class="carousel-item c-item"> <!-- carousel item 2 -->
+                                    <img src="../images/wide_orientation.png" class="c-img" alt="slide-2">
+                                    <div class="carousel-caption">
+                                        <h3>WIDE ORIENTATION</h3>
+                                        <p>Feel the Fantasy</p>
+                                    </div>
+                                </div>
+                        
+                                <div class="carousel-item c-item"> <!-- carousel item 3 -->
+                                    <img src="../images/second_gen_assembly.png" class="c-img" alt="slide-3">
+                                    <div class="carousel-caption"> 
+                                        <h3>SECOND GENERAL ASSEMBLY</h3>
+                                        <p>Level Up:Together Toward greater Challenges and Victories</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- previous button -->
+                            <button class="carousel-control-prev" type="button" data-bs-target="#web-carousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                            </button>
+                            <!-- next button -->
+                            <button class="carousel-control-next" type="button" data-bs-target="#web-carousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                </section>
+            </div>
+            
         </div>
         
-        <!-- Carousel section -->
-        <section class="d-flex align-items-center justify-content-center">
-            <div class="carousel-container">
-                <!-- Web carousel -->
-                <div id="web-carousel" class="carousel slide w-carousel" data-bs-ride="carousel">
-                    <!-- carousel inner -->
-                    <div class="carousel-inner c-inner"> 
-                        <div class="carousel-item c-item active"> <!-- carousel item 1 -->
-                            <img src="../images/buksu_intrams.png" class="c-img" alt="slide-1">
-                            <div class="carousel-caption">
-                                <h3>BukSU INTRAMURALS</h3>
-                                <p>Speed. Strength. Spirit</p>
-                            </div>
-                        </div>
-                                
-                        <div class="carousel-item c-item"> <!-- carousel item 2 -->
-                            <img src="../images/wide_orientation.png" class="c-img" alt="slide-2">
-                            <div class="carousel-caption">
-                                <h3>WIDE ORIENTATION</h3>
-                                <p>Feel the Fantasy</p>
-                            </div>
-                        </div>
-                
-                        <div class="carousel-item c-item"> <!-- carousel item 3 -->
-                            <img src="../images/second_gen_assembly.png" class="c-img" alt="slide-3">
-                            <div class="carousel-caption"> 
-                                <h3>SECOND GENERAL ASSEMBLY</h3>
-                                <p>Level Up:Together Toward greater Challenges and Victories</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- previous button -->
-                    <button class="carousel-control-prev" type="button" data-bs-target="#web-carousel" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                    </button>
-                    <!-- next button -->
-                    <button class="carousel-control-next" type="button" data-bs-target="#web-carousel" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                    </button>
-                </div>
-        </section>
+       
     </header>
     
     <main>
-        <div class="upcoming-events">
-            <h1>Upcoming Events</h1>
-        </div>
-        
         <!-- Cards section -->
         <section class="cards-section d-flex flex-column align-items-center gap-4"> 
-            <div class="card d-flex flex-column align-items-center" style="width: 20rem;"> <!-- Card 1 -->
-                <img src="../images/closing_intrams.png" class="card-img-top" style="width: 20rem;" alt="card-1">
-                <div class="card-body">
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <div class="upcoming-events d-flex w-100">
+                <h1>Upcoming Events</h1>
+            </div>
+            <div class="card d-flex flex-column align-items-center"> <!-- Card 1 -->
+                <figure>
+                    <img src="../images/buksu_one.png" class="card-img-top" alt="card-1">
+                </figure>
+                <div class="card-body d-flex gap-3">
+                    <div class="date">
+                        <h3>FEB</h3>
+                        <h4>20</h4>
+                    </div>
+                    <div class="card-description">
+                        <h3>The Stage is Set: BukSUONE is Here!</h3>
+                        <p class="card-text">Prepare to connect, inspire, and lead as ONE Smart BukSU. Let's continue to make history together!</p>
+                    </div>
                 </div>
             </div>
 
-            <div class="card" style="width: 20rem;"> <!-- Card 2 -->
-                <img src="../images/wide_orientation.png" class="card-img-top" style="height:20rem;" alt="card-1">
-                <div class="card-body">
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <div class="card d-flex flex-column align-items-center"> <!-- Card 2 -->
+                <figure>
+                    <img src="../images/closing_intrams.png" class="card-img-top" alt="card-1">
+                </figure>
+                <div class="card-body d-flex justify-content-center gap-3">
+                    <div class="date">
+                        <h3>MAR</h3>
+                        <h4>14</h4>
+                    </div>
+                    <div class="card-description">
+                        <h3>INTRAMURALS 2025 CLOSING PROGRAM</h3>
+                        <p class="card-text">This week is packed with excitement, designed just for you! Discover everything Bukidnon State University has to offer.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card d-flex flex-column align-items-center"> <!-- Card 3 -->
+                <figure>
+                    <img src="../images/buksu_intrams_parade.png" class="card-img-top" alt="card-1">
+                </figure>
+                <div class="card-body d-flex gap-3">
+                    <div class="date">
+                        <h3>MAR</h3>
+                        <h4>14</h4>
+                    </div>
+                    <div class="card-description">
+                        <h3>University-Wide Orientation</h3>
+                        <p class="card-text">This week is packed with excitement, designed just for you! Discover everything Bukidnon State University has to offer.</p>
+                    </div>                    
                 </div>
             </div>
         </section>
+
+        <section>
+            <div class="colleges d-flex flex-column text-center w-100">
+                <h1>Colleges</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione error harum voluptatem voluptas</p>
+            </div>
+            <article class="departments d-flex flex-column d-sm-none align-items-center gap-3">
+                <figure class="d-flex gap-3">
+                    <img src="../images/cas_college.png" alt="cas">
+                    <img src="../images/cob_college.png" alt="cob">
+                    <img src="../images/coe_college.png" alt="coe">
+                    <img src="../images/law_college.png" alt="law">
+                </figure>
+                <figure class="d-flex gap-3">
+                    <img src="../images/con_college.png" alt="con">
+                    <img src="../images/cpag_college.png" alt="cpag">
+                    <img src="../images/cot_college.png" alt="cot">
+                </figure>
+            </article>
+        </section>
     </main>
+
+    <footer>
+        <h1>asdasd</h1>
+    </footer>
 
     <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>

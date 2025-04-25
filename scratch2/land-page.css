@@ -1,0 +1,216 @@
+/* Regular Rubik */
+@font-face {
+    font-family: "Roboto";
+    src: url(../roboto_static/Roboto-Regular.ttf);
+}
+/* Bold Roboto */
+@font-face {
+    font-family: "Roboto-Bold";
+    src: url(../roboto_static/Roboto-Bold.ttf);
+}
+
+@font-face {
+    font-family: "Roboto-SemiBold";
+    src: url(../roboto_static/Roboto-SemiBold.ttf);
+}
+
+:root{
+    --linear-pink: rgba(237, 70, 145, 0.623);
+    --darker-pink: rgb(235, 50, 133);
+    --linear-purple: rgba(85, 34, 204, 0.733);
+    --darker-purple: rgb(85, 34, 204);
+    --light-royal-blue: #4943F2;
+    --orange-peel: #E57930;
+    --carousel-control-btn: #3D37F1;
+    --dark-blue: #242565;
+    --darker-blue: #13133b;
+    --grayish-white: #dfdfdf83;
+    --box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    --gray-font: #b9b6b6;
+}
+
+html body{
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    font-family: "Roboto";
+}
+
+header{
+    grid-row: 1;
+    background-image: linear-gradient(to right, var(--linear-pink), var(--linear-purple)),
+    url("../images/buksu-image.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+main{
+    grid-row: 2;
+}
+
+@media screen and (min-width: 319px) and (max-width: 575px) {
+    html body{
+        grid-template-rows: 1.1fr 2.7fr 0.3fr;
+    }
+    
+    header{
+        margin: 0 0 1in 0;
+    }
+    
+    header figure img{
+        height: 50px;
+    }
+
+    header nav li{
+        list-style: none;
+    }
+
+    header .upper .menu i{
+        font-size: 1.6rem;
+        color: white;
+    }
+
+    /* Carousel-section */
+    header .w-carousel{
+        height: 48dvh;
+        width: 95dvw;
+        border-radius: 15px;
+    }
+
+    header .c-item img{
+        filter: brightness(0.5);
+    }
+    
+    header .carousel-caption h4{
+        font-family: "Roboto-Bold";
+        font-size: 1.2rem;
+    }
+
+    header .carousel-caption p{
+        font-size: 1rem;
+    }
+
+    header .carousel-caption{
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        text-align: center;
+    }
+
+    header .c-inner,
+    header .c-item,
+    header .c-img{
+        height: 100%;
+        width: 100%;
+        border-radius: 15px;
+        object-fit: cover;
+        box-shadow: var(--box-shadow);
+    }
+
+    .register-create .btn{
+        background-color: var(--darker-purple);
+        border: 0;
+        border-radius: 20px;
+        color: white;
+        font-family: "Roboto-SemiBold";
+        padding: 2.5vw;
+        width: 70vw;
+    }
+
+    /* Main section */
+    main{
+        margin: 0 0 1in 0;
+    }
+    main h1,
+    main h6{
+        font-family: "Roboto-Bold";
+        color: var(--dark-blue);
+    }
+
+    main .upcoming-events h1{
+        margin: 0 0 0 7vw;
+    }
+
+    main .upcoming-events,
+    main .row{
+        width: 100%;
+        margin: 0;
+        justify-content: center;
+    }
+
+    main .card{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 70vw;
+        box-shadow: var(--box-shadow);
+    }
+
+    main .card img{
+        height: 25vh;
+        width: 70vw;
+        object-fit: cover;
+    }
+
+    main .card .card-body p{
+        color: var(--darker-blue);
+        font-size: 13px;
+    }
+
+    main .card .card-body .dates h6{
+        font-family: "Roboto-Bold";
+        font-size: 13px;
+        text-align: center;
+    }
+
+    main .card .card-body .dates .day{
+        font-size: 25px;
+        color: var(--light-royal-blue);
+    }
+
+    main .row:first-child button{
+        padding: 2vw;
+        border-radius: 15px;
+        border: 1.7px solid var(--darker-purple);
+        font-size: 1rem;
+        color: var(--darker-purple);
+    }
+
+    /* Colleges row */
+    main .row:nth-child(2){
+        margin: 1in 0 0 0;
+    }
+
+    .colleges p{
+        color: var(--gray-font);
+        font-size: 11px;
+    }
+
+    .department figure img{
+        height: 10vh;
+    }
+
+    footer{
+        background-color: var(--dark-blue);
+        grid-row: 3;
+    }
+
+    footer .copyrights figure img{
+        height: 4rem;
+    }
+
+    footer .web-icons i{
+        color: white;
+        font-size: 2rem;
+    }
+
+    footer hr{
+        width: 80%;
+        border: 1px solid white;
+    }
+
+    footer figcaption{
+        font-size: 14px;
+        color: white;
+    }
+}

@@ -12,6 +12,7 @@
 :root{
     --linear-pink: rgba(237, 70, 145, 0.623);
     --linear-purple: rgba(85, 34, 204, 0.733);
+    --light-royal-blue: #4943F2;
     --orange-peel: #E57930;
     --carousel-control-btn: #3D37F1;
     --dark-blue: #242565;
@@ -23,7 +24,7 @@
 
 html body{
     display: grid;
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-rows: 50vh repeat(2, 1fr);
     font-family: "Roboto";
 }
 
@@ -35,15 +36,21 @@ header{
     background-size: cover;
 }
 
+main{
+    grid-row: 2;
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+}
+
 .login-btn{
     border-radius: 13px;
 }
 
 /* For mobile size */
-@media screen and (min-width: 319px) and (max-width: 426px) {
-    html body{
-        grid-template-rows: 70vh repeat(2, 1fr);
-    }
+@media screen and (min-width: 320px) and (max-width: 480px) {
+    /* html body{
+        grid-template-rows: 70vh 1fr 1fr;
+    } */
     
     header{
         grid-row: 1;
@@ -51,9 +58,13 @@ header{
         grid-template-rows: 20% 1fr;
     }
 
+    header .upper img{
+        width: 8.5rem;
+    }
+
     .menu-icon i{
         color: white;
-        font-size: 1.5rem;
+        font-size: 25px;
     }
 
     header section{
@@ -87,16 +98,25 @@ header{
     }
 
     /* Main content */
-    main{
-        grid-row: 2;
-    }
+     main{
+        grid-template-rows: repeat(2, 1fr);
+     }
 
-    main h1{
+    main h1, main h3, main h4{
         font-family: "Roboto-Bold";
         color: var(--dark-blue);
     }
 
-    main .cards-section p{
+    /* Upcoming events section */
+    main section:nth-child(1){
+        grid-row: 1;
+    }
+
+    main section:nth-child(2){
+        grid-row: 2;
+    }
+
+    main .cards-section p, main .card-body{
         color: var(--darker-blue);
     }
 
@@ -105,6 +125,62 @@ header{
     }
 
     main .upcoming-events{
-        padding: 1in 0 1.2rem 2rem;
+        grid-row: 1;
+        padding: 0.6in 0 1rem 2rem;
     }
+
+    main .card{
+        width: 18.8rem;
+    }
+
+    main .card .card-body{
+        padding: 0.2rem 1rem 1.2rem 1rem;
+    }
+
+    main .card .card-text{
+        font-size: 12px;
+    }
+
+    main .card .date{
+        line-height: 80%;
+    }
+
+    main .card-description h3{
+        font-size: 14.5px;
+    }
+
+    main .date h3{
+        color: var(--light-royal-blue);
+        font-size: 13px;
+    }
+
+    main .card figure img{
+        height: 18.8rem;
+        width: 18.8rem;
+        object-fit: cover;
+    }
+
+    /* Colleges section */
+    main section:nth-child(2){
+        padding: 1in 0 0 0;
+    }
+
+    main section:nth-child(2) figure img{
+        height: 80px;
+    }
+
+    main section:nth-child(2) .colleges{
+        padding: 1rem;
+    }
+
+    main section:nth-child(2) p{
+        font-size: 12px;
+        color: var(--gray-font);
+    }
+    
+    footer{
+        grid-row: 3;
+        background-color: var(--dark-blue);
+    }
+
 }
