@@ -21,7 +21,6 @@
     --darker-purple: rgb(85, 34, 204);
     --light-royal-blue: #4943F2;
     --orange-peel: #E57930;
-    --carousel-control-btn: #3D37F1;
     --dark-blue: #242565;
     --darker-blue: #13133b;
     --grayish-white: #dfdfdf83;
@@ -34,7 +33,7 @@ html body{
     grid-template-rows: repeat(3, 1fr);
     font-family: "Roboto";
 }
-
+/* Header */
 header{
     grid-row: 1;
     background-image: linear-gradient(to right, var(--linear-pink), var(--linear-purple)),
@@ -44,173 +43,405 @@ header{
     background-repeat: no-repeat;
 }
 
+header .inputs{ 
+    border-radius: 10px;
+    background-color: var(--dark-blue);
+}
+
+header figure img{
+    height: clamp(20px, 14vw, 80px);
+}
+
+header nav li{
+    list-style: none;
+}
+
+header nav ul{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+header nav ul li a{
+    height: clamp(1rem, 50vw, 3rem);
+    color: white;
+    text-decoration: none;
+}
+
+header .upper .menu i{
+    color: white;
+    font-size: 1.6rem;
+}
+
+/* Header (Carousel-section) */ 
+header .lower-header h1{
+    text-align: center;
+    padding: 0;
+    font-size: clamp(2.5rem, 2vw, 5rem);
+    height: 100%;
+}
+
+header .w-carousel{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+header .tagline-paragraph p{
+    text-align: center;
+    font-size: clamp(16px, 5vw, 18px);
+}
+
+header .lower-header h1,
+header .tagline-paragraph p{
+    font-family: "Roboto-Bold";
+    color: white;
+}
+
+header .lower-header .c-inner{
+    display: flex;
+    width: 80%;
+}
+
+header .tagline-paragraph p{
+    font-family: "Roboto";
+}
+
+html header .w-carousel *{
+    box-shadow: none;
+}
+
+header .c-inner,
+header .c-item,
+header .c-img{
+    box-shadow: var(--box-shadow);
+}
+
+header .lower-header .c-item img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    box-shadow: none;
+}
+
+.register-create .btn{
+    border: 0;
+    color: var(--darker-blue);
+    font-family: "Roboto-SemiBold";
+    border-radius: 15px;
+    font-size: clamp(1rem, 10vw, 3rem);
+    padding: 2.5vw;
+    margin: 0 0 1.1rem 0;
+}
+
+/* Main section */
 main{
     grid-row: 2;
 }
 
+main h1,
+main h6{
+    font-family: "Roboto-Bold";
+    color: var(--dark-blue);
+}
+
+main h1{
+    font-size: clamp(1.7rem, 1vw, 3rem);
+}
+
+main .current-event-title h1,
+main .upcoming-events-title h1,
+main .colleges-title-text h1{
+    font-size: clamp(1.6rem, 8vw, 2.4rem);
+}
+
+main .current-event .current-event-card{
+    height: clamp(300px, 85vw, 600px);
+    width: clamp(75%, 50vw, 70%);
+}
+
+main .current-event .current-event-card img{
+    padding: 0;
+    height: clamp(90px, 40vw, 300px);
+    width: 100%;
+    object-fit: cover;
+}
+
+main .current-event .current-event-card .card-body p{
+    font-size: clamp(10px, 3vw, 16px);
+}
+
+main .upcoming-events,
+main .row{
+    width: 100%;
+    margin: 0;
+    justify-content: center;
+}
+
+main .card{
+    padding: 0;
+    height: clamp(300px, 85vw, 600px);
+    width: clamp(73%, 50vw, 75%);
+    box-shadow: var(--box-shadow);
+}
+
+main .card .card-body p{
+    color: var(--darker-blue);
+    font-size: clamp(9px, 1vw, 1.3rem);
+}
+
+main .cards-container .card-body h6{
+    font-size: clamp(10px, 2.5vw, 11px);
+}
+
+main .cards-container .card .card-text{
+    font-size: clamp(9px, 1.7vw, 0.9rem);
+}
+
+main .card .card-body .dates h6{
+    font-family: "Roboto-Bold";
+    text-align: center;
+    font-size: 13px;
+}
+
+main .card .card-body .dates .day{
+    color: var(--light-royal-blue);
+    font-size: 25px;
+}
+
+main .card .card-body .event-name-text h6{
+    font-size: clamp(15px, 4vw, 19px);
+}
+
+main .row:first-child button{
+    border-radius: 15px;
+    border: 1.7px solid var(--darker-purple);
+    color: var(--darker-purple);
+}
+
+.colleges p{
+    color: var(--gray-font);
+    font-size: clamp(10px, 3vw, 1.15rem);
+}
+
+.department{
+    width: 10vw;
+}
+
+.department figure img{
+    height: clamp(4.4rem, 10vw, 8rem);
+    width: clamp(4.4rem, 10vw, 8rem);
+}
+
+main .row .upcoming-events .btn{
+    margin: 2vh 0 20px 0;
+    width: clamp(40%, 3.5vw, 45%);
+    font-size: clamp(10px, 3.5vw, 1.3rem);
+}
+
+/* Footer */
+footer{
+    background-color: var(--dark-blue);
+    grid-row: 3;
+}
+
+footer{
+    background-color: var(--dark-blue);
+}
+
+footer figcaption{
+    color: white;
+}
+
+footer hr{
+    width: 90%;
+    border: 1px solid white;
+}
+
+footer .web-icons i{
+    font-size: clamp(1.5rem, 3vw, 3rem);
+    color: white;
+}
+
+footer .copyrights figure img{
+    height: clamp(4rem, 50vw, 6rem);
+}
+
+footer figcaption{
+    font-size: clamp(12px, 3vw, 1rem);
+}
+
 @media screen and (min-width: 319px) and (max-width: 575px) {
     html body{
-        grid-template-rows: 1.1fr 2.7fr 0.3fr;
-    }
-    
-    header{
-        margin: 0 0 1in 0;
-    }
-    
-    header figure img{
-        height: 50px;
-    }
-
-    header nav li{
-        list-style: none;
-    }
-
-    header .upper .menu i{
-        font-size: 1.6rem;
-        color: white;
-    }
-
-    /* Carousel-section */
-    header .w-carousel{
-        height: 48dvh;
-        width: 95dvw;
-        border-radius: 15px;
-    }
-
-    header .c-item img{
-        filter: brightness(0.5);
-    }
-    
-    header .carousel-caption h4{
-        font-family: "Roboto-Bold";
-        font-size: 1.2rem;
-    }
-
-    header .carousel-caption p{
-        font-size: 1rem;
-    }
-
-    header .carousel-caption{
-        display: flex;
-        flex-direction: column;
-        padding: 0;
-        text-align: center;
-    }
-
-    header .c-inner,
-    header .c-item,
-    header .c-img{
-        height: 100%;
-        width: 100%;
-        border-radius: 15px;
-        object-fit: cover;
-        box-shadow: var(--box-shadow);
-    }
-
-    .register-create .btn{
-        background-color: var(--darker-purple);
-        border: 0;
-        border-radius: 20px;
-        color: white;
-        font-family: "Roboto-SemiBold";
-        padding: 2.5vw;
-        width: 70vw;
-    }
-
-    /* Main section */
-    main{
-        margin: 0 0 1in 0;
-    }
-    main h1,
-    main h6{
-        font-family: "Roboto-Bold";
-        color: var(--dark-blue);
-    }
-
-    main .upcoming-events h1{
-        margin: 0 0 0 7vw;
-    }
-
-    main .upcoming-events,
-    main .row{
-        width: 100%;
-        margin: 0;
-        justify-content: center;
-    }
-
-    main .card{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 70vw;
-        box-shadow: var(--box-shadow);
+        grid-template-rows: 0.8fr 2.5fr 0.3fr;
     }
 
     main .card img{
-        height: 25vh;
-        width: 70vw;
+        height: 55%;
+        width: 100%;
         object-fit: cover;
     }
 
-    main .card .card-body p{
-        color: var(--darker-blue);
-        font-size: 13px;
-    }
-
-    main .card .card-body .dates h6{
-        font-family: "Roboto-Bold";
-        font-size: 13px;
-        text-align: center;
-    }
-
-    main .card .card-body .dates .day{
-        font-size: 25px;
-        color: var(--light-royal-blue);
-    }
-
     main .row:first-child button{
-        padding: 2vw;
-        border-radius: 15px;
-        border: 1.7px solid var(--darker-purple);
+        padding: 2vw;   
         font-size: 1rem;
-        color: var(--darker-purple);
     }
 
     /* Colleges row */
     main .row:nth-child(2){
         margin: 1in 0 0 0;
     }
+}
 
-    .colleges p{
-        color: var(--gray-font);
-        font-size: 11px;
+/* larger screens */
+@media screen and (min-width: 576px) and (max-width: 960px) {
+    html body{
+        grid-template-rows: 0.5fr 2.5fr 0.1fr;
     }
 
-    .department figure img{
-        height: 10vh;
+    header .tagline h1,
+    header .tagline-paragraph p{
+        text-align: left;
     }
 
-    footer{
-        background-color: var(--dark-blue);
+    /* Main section */
+    main .current-event .current-event-card{
+        height: clamp(280px, 80vw, 600px);
+        width: clamp(20%, 50vw, 70%);
+    }
+
+    main .cards-container{
+        margin: 0;
+        gap: 20px;
+    }
+
+    main .cards-container .card{
+        padding: 0;
+        height: clamp(300px, 55vw, 350px);
+        width: 100%;
+    }
+
+    main .upcoming-events .upcoming-events-title h1,
+    main .upcoming-events .f-card1,
+    main .upcoming-events .f-card2{
+        place-items: end;
+        grid-row: 1;
+    }
+
+    main .upcoming-events .f-card3,
+    main .upcoming-events .f-card4{
+        grid-row: 2;
+    }
+
+    main .card img{
+        height: 50%;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    main .row:first-child button{
+        padding: 2vw;   
+        font-size: 1rem;
+    }
+
+    main .upcoming-events button{
         grid-row: 3;
     }
 
-    footer .copyrights figure img{
-        height: 4rem;
+    /* Colleges row */
+    main .row:nth-child(2){
+        margin: 1in 0 0 0;
+    }
+}
+
+@media screen and (min-width: 961px) and (max-width: 1024px){
+    html body{
+        grid-template-rows: 0.5fr 2.5fr 0.1fr;
     }
 
-    footer .web-icons i{
-        color: white;
-        font-size: 2rem;
+    header .tagline h1,
+    header .tagline-paragraph p{
+        text-align: left;
     }
 
-    footer hr{
-        width: 80%;
-        border: 1px solid white;
+    /* Main section */
+    main .current-event .current-event-card{
+        height: clamp(200px, 80vw, 400px);
+        width: clamp(10%, 45vw, 70%);
     }
 
-    footer figcaption{
-        font-size: 14px;
-        color: white;
+    main .cards-container{
+        margin: 0;
+        gap: 20px;
+    }
+
+    main .cards-container .card{
+        padding: 0;
+        height: clamp(70px, 40vw, 600px);
+        width: 100%;
+    }
+
+    main .cards-container .card .card-body p{
+        font-size: clamp(8px, 1.7vw, 1.5rem);
+    }    
+
+    main .upcoming-events .upcoming-events-title h1,
+    main .upcoming-events .f-card1,
+    main .upcoming-events .f-card2{
+        place-items: end;
+        grid-row: 1;
+    }
+
+    main .card img{
+        height: 50%;
+        width: 100%;
+        object-fit: cover;
+    }
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1440px){
+    html body{
+        grid-template-rows: 0.5fr 2.5fr 0.1fr;
+    }
+
+    header .tagline h1,
+    header .tagline-paragraph p{
+        text-align: left;
+    }
+
+    /* Main section */
+    main .current-event .current-event-card{
+        height: clamp(200px, 80vw, 400px);
+        width: clamp(10%, 45vw, 70%);
+    }
+
+    main .upcoming-events .cards-container{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        margin: 0;
+        gap: 20px;
+    }
+
+    main .cards-container .card{
+        padding: 0;
+        height: clamp(70px, 40vw, 600px);
+        width: 100%;
+    }
+
+    main .cards-container .card .card-body p{
+        font-size: clamp(8px, 1.7vw, 1.5rem);
+    }    
+
+    main .upcoming-events .upcoming-events-title h1,
+    main .upcoming-events .f-card1,
+    main .upcoming-events .f-card2{
+        place-items: end;
+        grid-row: 1;
+    }
+
+    main .card img{
+        height: 50%;
+        width: 100%;
+        object-fit: cover;
     }
 }
