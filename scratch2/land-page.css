@@ -363,6 +363,14 @@ footer figcaption{
     header .tagline-paragraph p{
         text-align: left;
     }
+    
+    header .tagline-container h1{
+        font-size: clamp(10px, 4vw, 8rem);
+    }
+    
+    header .tagline-container p{
+        font-size: clamp(16px, 5vw, 1.5rem);
+    }
 
     /* Main section */
     main .current-event .current-event-card{
@@ -382,7 +390,7 @@ footer figcaption{
     }
 
     main .cards-container .card .card-body p{
-        font-size: clamp(8px, 1.7vw, 1.5rem);
+        font-size: clamp(8px, 1.7vw, 1.2rem);
     }    
 
     main .upcoming-events .upcoming-events-title h1,
@@ -409,6 +417,15 @@ footer figcaption{
         text-align: left;
     }
 
+    
+    header .tagline-container h1{
+        font-size: clamp(10px, 5vw, 9rem);
+    }
+    
+    header .tagline-container p{
+        font-size: clamp(16px, 5vw, 2rem);
+    }
+
     /* Main section */
     main .current-event .current-event-card{
         height: clamp(200px, 80vw, 400px);
@@ -424,20 +441,62 @@ footer figcaption{
 
     main .cards-container .card{
         padding: 0;
-        height: clamp(70px, 40vw, 600px);
+        height: clamp(70px, 40vw, 400px);
         width: 100%;
     }
 
     main .cards-container .card .card-body p{
-        font-size: clamp(8px, 1.7vw, 1.5rem);
+        font-size: clamp(8px, 1.7vw, 1rem);
     }    
 
-    main .upcoming-events .upcoming-events-title h1,
-    main .upcoming-events .f-card1,
-    main .upcoming-events .f-card2{
-        place-items: end;
-        grid-row: 1;
+    main .card img{
+        height: 50%;
+        width: 100%;
+        object-fit: cover;
     }
+}
+
+@media screen and (min-width: 1441px){
+    html body{
+        grid-template-rows: 0.5fr 2.5fr 0.1fr;
+    }
+
+    header .tagline h1,
+    header .tagline-paragraph p{
+        text-align: left;
+    }
+
+    
+    header .tagline-container h1{
+        font-size: clamp(10px, 5vw, 7rem);
+    }
+    
+    header .tagline-container p{
+        font-size: clamp(16px, 5vw, 1.2rem);
+    }
+
+    /* Main section */
+    main .current-event .current-event-card{
+        height: clamp(200px, 80vw, 400px);
+        width: clamp(10%, 45vw, 70%);
+    }
+
+    main .upcoming-events .cards-container{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        margin: 0;
+        gap: 20px;
+    }
+
+    main .cards-container .card{
+        padding: 0;
+        height: clamp(70px, 40vw, 400px);
+        width: 100%;
+    }
+
+    main .cards-container .card .card-body p{
+        font-size: clamp(8px, 1.7vw, 1rem);
+    }    
 
     main .card img{
         height: 50%;
