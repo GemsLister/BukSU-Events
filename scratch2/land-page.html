@@ -18,14 +18,14 @@
                     <a href=""><i class="fas fa-bars"></i></a>
                 </div>
             </figure>
-            <nav class="d-flex sm-w-100 align-items-center gap-2">
-                <ul class="d-none gap-3 d-sm-flex p-0">
+            <nav class="d-flex align-items-sm-center gap-2 align-items-center align-items-sm-start justify-content-sm-end w-100 w-sm-100 ">
+                <ul class="d-none gap-3 d-sm-flex pr-1">
                     <li><a href="">Home</a></li>
                     <li><a href="">Events</a></li>
                     <li><a href="">Colleges</a></li>
                     <li><a href="">About Us</a></li>
+                    <button class="btn btn-outline-light d-none d-sm-flex">Login</button>
                 </ul>
-                <button class="btn btn-outline-light d-none d-sm-flex">Login</button>
             </nav>
         </div>
             
@@ -49,7 +49,7 @@
              <div class="tagline-container d-flex flex-column align-items-center align-items-sm-start w-100 h-50 px-sm-2
              text-center text-sm-start">
                 <div class="tagline text-sm-start">
-                    <h1>Connect, Enjoy, Innovate</h1>
+                    <h1>Connect. Enjoy. Innovate.</h1>
                 </div>
                 <div class="tagline-paragraph d-flex justify-content-center w-100">
                     <p>
@@ -73,7 +73,7 @@
             </div>
         </section>
 
-        <div class="inputs-container p-4 d-none d-sm-flex justify-content-center">
+        <div class="inputs-container pb-5 d-none">
             <div class="inputs d-none d-sm-flex align-items-center px-3 py-4 gap-3">
                 <!-- Selecting date -->
                 <div class="select-date input-group">
@@ -109,7 +109,7 @@
 
     <main>
         <!-- Upcoming Events Row -->
-        <div class="row">
+        <div class="d-flex flex-column align-items-center">
             <div class="current-event d-flex justify-content-center my-5 row h-25">
                 <div class="current-event-title d-flex justify-content-center">
                     <h1>Current Event</h1>
@@ -125,13 +125,14 @@
                 </div>
             </div>
 
-            <div class="upcoming-events d-flex justify-content-center gap-3 row">
+            <div class="upcoming-events d-flex justify-content-center gap-3 row px-0 px-sm-3">
                 <div class="upcoming-events-title d-flex justify-content-center">
                     <h1>Upcoming Events</h1>
                 </div>
 
                 <!-- Shows if screen size is greater than mobile screen -->
-                <div class="cards-container d-none d-sm-grid">
+                <div class="cards-container d-none d-sm-grid d-lg-grid">
+                    <!-- First card -->
                     <div class="card f-card1">
                         <img src="../images/second_gen_assembly.png" class="card-img-top" alt="...">
                         <div class="card-body">
@@ -141,7 +142,7 @@
                             </div>
                         </div>
                     </div>
-
+                    <!-- Second card -->
                     <div class="card f-card2">
                         <img src="../images/exciting_raffle_promo.png" class="card-img-top" alt="...">
                         <div class="card-body">
@@ -151,7 +152,7 @@
                             </div>
                         </div>
                     </div>
-    
+                    <!-- Third card -->
                     <div class="card f-card3">
                         <img src="../images/buksu_one.png" class="card-img-top" alt="...">
                         <div class="card-body">
@@ -161,7 +162,7 @@
                             </div>
                         </div>
                     </div>
-    
+                    <!-- Fourth card -->
                     <div class="card f-card4 d-lg-flex">
                         <img src="../images/buksu_intrams.png" class="card-img-top" alt="...">
                         <div class="card-body">
@@ -171,7 +172,7 @@
                             </div>
                         </div>
                     </div>
-
+                    <!-- Fifth card -->
                     <div class="card f-card5 d-none d-lg-flex d-sm-none">
                         <img src="../images/buksu_intrams_parade.png" class="card-img-top" alt="...">
                         <div class="card-body">
@@ -181,7 +182,7 @@
                             </div>
                         </div>
                     </div>
-
+                    <!-- Sixth card -->
                     <div class="card f-card6 d-none d-lg-flex d-sm-none">
                         <img src="../images/closing_intrams.png" class="card-img-top" alt="...">
                         <div class="card-body">
@@ -192,8 +193,9 @@
                         </div>
                     </div>
                 </div>
-
+                <!-- for mobile screens -->
                 <div class="cards-container-mobile d-flex flex-column align-items-center gap-4 d-sm-none">
+                    <!-- First card -->
                     <div class="card">
                         <img src="../images/second_gen_assembly.png" class="card-img-top" alt="...">
                         <div class="card-body">
@@ -203,7 +205,7 @@
                             </div>
                         </div>
                     </div>
-    
+                    <!-- Second card -->
                     <div class="card">
                         <img src="../images/exciting_raffle_promo.png" class="card-img-top" alt="...">
                         <div class="card-body">
@@ -213,7 +215,7 @@
                             </div>
                         </div>
                     </div>
-    
+                    <!-- Third card -->
                     <div class="card">
                         <img src="../images/buksu_intrams.png" class="card-img-top" alt="...">
                         <div class="card-body">
@@ -224,12 +226,12 @@
                         </div>
                     </div>
                 </div>
-                <button class="btn btn-outline-primary p-3 sm-col">Load more</button>
+                <button class="btn btn-outline-primary p-3 my-3 flex-sm-col w-25">Load more</button>
             </div>
         </div>
 
         <!-- Colleges Row -->
-         <div class="row mb-5">
+         <div class="college-row row">
             <div class="colleges d-flex flex-column align-items-center gap-4">
                 <div class="colleges-title-text d-flex flex-column align-items-center">
                     <h1>Colleges</h1>

@@ -44,8 +44,10 @@ header{
 }
 
 header .inputs{ 
-    border-radius: 10px;
+    border-radius: 8px;
     background-color: var(--dark-blue);
+    width: clamp(20px, 30vw, 80vh);
+    width: clamp(20px, 45vw, 80vw);
 }
 
 header figure img{
@@ -59,7 +61,7 @@ header nav li{
 header nav ul{
     display: flex;
     align-items: center;
-    padding: 10px;
+    padding: 0 1.5vw 0 0 ;
 }
 
 header nav ul li a{
@@ -156,8 +158,8 @@ main .colleges-title-text h1{
 }
 
 main .current-event .current-event-card{
-    height: clamp(300px, 85vw, 600px);
-    width: clamp(75%, 50vw, 70%);
+    height: clamp(300px, 80vw, 600px);
+    width: clamp(70%, 50vw, 80%);
 }
 
 main .current-event .current-event-card img{
@@ -219,6 +221,10 @@ main .row:first-child button{
     color: var(--darker-purple);
 }
 
+main .college-row{
+    margin: 0 0 12vh 0;
+}
+
 .colleges p{
     color: var(--gray-font);
     font-size: clamp(10px, 3vw, 1.15rem);
@@ -229,14 +235,20 @@ main .row:first-child button{
 }
 
 .department figure img{
-    height: clamp(4.4rem, 10vw, 8rem);
-    width: clamp(4.4rem, 10vw, 8rem);
+    height: clamp(4.4rem, 10vw, 6rem);
+    width: clamp(4.4rem, 10vw, 6rem);
 }
 
 main .row .upcoming-events .btn{
+    border: 1px solid var(--dark-blue);
     margin: 2vh 0 20px 0;
-    width: clamp(40%, 3.5vw, 45%);
-    font-size: clamp(10px, 3.5vw, 1.3rem);
+    width: clamp(11px, 50vw, 8px);
+    font-size: clamp(1px, 2vw, 1px);
+}
+
+html main .row .upcoming-events .btn:hover{
+    background-color: 1px solid var(--dark-blue);
+    color: white;
 }
 
 /* Footer */
@@ -302,6 +314,11 @@ footer figcaption{
     header .tagline h1,
     header .tagline-paragraph p{
         text-align: left;
+    }
+
+    header .lower-header .c-inner{
+        display: flex;
+        width: 80%;
     }
 
     /* Main section */
@@ -372,6 +389,8 @@ footer figcaption{
         font-size: clamp(16px, 5vw, 1.5rem);
     }
 
+    
+
     /* Main section */
     main .current-event .current-event-card{
         height: clamp(200px, 80vw, 400px);
@@ -428,8 +447,8 @@ footer figcaption{
 
     /* Main section */
     main .current-event .current-event-card{
-        height: clamp(200px, 80vw, 400px);
-        width: clamp(10%, 45vw, 70%);
+        height: clamp(70%, 30vw, 280px);
+        width: clamp(35%, 10vw, 70%);
     }
 
     main .upcoming-events .cards-container{
@@ -465,37 +484,53 @@ footer figcaption{
     header .tagline-paragraph p{
         text-align: left;
     }
-
     
     header .tagline-container h1{
-        font-size: clamp(10px, 5vw, 7rem);
+        font-size: clamp(10px, 4.5vw, 5rem);
     }
     
     header .tagline-container p{
-        font-size: clamp(16px, 5vw, 1.2rem);
+        font-size: clamp(16px, 5vw, 1.1rem);
+    }
+
+    header .lower-header .c-inner{
+        display: flex;
+        width: 60%;
     }
 
     /* Main section */
     main .current-event .current-event-card{
-        height: clamp(200px, 80vw, 400px);
-        width: clamp(10%, 45vw, 70%);
+        height: clamp(60%, 20vw, 280px);
+        width: clamp(35%, 10vw, 60%);
+    }
+
+    main .upcoming-events{
+        display: grid;
+        padding: 6vw;
+        justify-items: center;
     }
 
     main .upcoming-events .cards-container{
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        justify-content: center;
+        grid-template-columns: repeat(3, 0.25fr);
         margin: 0;
-        gap: 20px;
+        gap: 30px;
+    }
+
+    main .row .upcoming-events button .btn{
+        border: 3px solid black;
+        margin: 2vh 0 20px 0;
+        width: 1px;
     }
 
     main .cards-container .card{
-        padding: 0;
-        height: clamp(70px, 40vw, 400px);
+        height: clamp(70px, 40vw, 280px);
         width: 100%;
     }
 
     main .cards-container .card .card-body p{
-        font-size: clamp(8px, 1.7vw, 1rem);
+        font-size: clamp(8px, 1vw, 11.5px);
     }    
 
     main .card img{
