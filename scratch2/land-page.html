@@ -18,13 +18,15 @@
                     <a href=""><i class="fas fa-bars"></i></a>
                 </div>
             </figure>
-            <nav class="d-flex align-items-sm-center gap-2 align-items-center align-items-sm-start justify-content-sm-end w-100 w-sm-100 ">
+            <nav class="d-flex align-items-sm-center gap-2 align-items-center align-items-sm-start justify-content-sm-end w-100 w-sm-100">
                 <ul class="d-none gap-3 d-sm-flex pr-1">
                     <li><a href="">Home</a></li>
                     <li><a href="">Events</a></li>
                     <li><a href="">Colleges</a></li>
                     <li><a href="">About Us</a></li>
-                    <button class="btn btn-outline-light d-none d-sm-flex">Login</button>
+                    <form action="login.html">
+                        <button class="btn btn-outline-light d-none d-sm-flex" type="submit">Login</button>
+                    </form>
                 </ul>
             </nav>
         </div>
@@ -72,39 +74,6 @@
                 </div>
             </div>
         </section>
-
-        <div class="inputs-container pb-5 d-none">
-            <div class="inputs d-none d-sm-flex align-items-center px-3 py-4 gap-3">
-                <!-- Selecting date -->
-                <div class="select-date input-group">
-                    <input type="date" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
-                </div>
-                <!-- Selecting sites -->
-                <div class="select-university-site dropdown">
-                    <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                    University Site
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><a class="dropdown-item" href="#">Auditorium</a></li>
-                    <li><a class="dropdown-item" href="#">Gymnasium</a></li>
-                    <li><a class="dropdown-item" href="#">Library</a></li>
-                    <li><a class="dropdown-item" href="#">University Oval</a></li>
-                    </ul>
-                </div>
-                <!-- Selecting event -->
-                <div class="select-event dropdown">
-                    <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                        University Event
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-        </div>
     </header>
 
     <main>
