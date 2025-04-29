@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in</title>
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css"> 
+    <link rel="stylesheet" href="../fontawesome-free-6.7.2-web/css/all.min.css">
+    <link rel="stylesheet" href="sign-in.css">
+</head>
+<body>
+    <!-- header section -->
+    <header class="container-fluid d-flex">
+        <figure class="col-3 d-flex">
+            <img src="../images/buksu_events_logo.png" alt="buksu-event-logo" class="logo">
+        </figure>
+
+        <!-- Navigation -->
+        <!--for large screens  -->
+        <nav class="col-7 d-flex justify-content-end">
+            <!-- navigation links -->
+             <ul class="d-none d-md-flex d-lg-flex d-xl-flex d-xxl-flex gap-3 gap-xxl-5">
+                <li class="list-unstyled"><a href="">Home</a></li>
+                <li class="list-unstyled"><a href="">Colleges</a></li>
+                <li class="list-unstyled"><a href="">Events</a></li>
+                <li class="list-unstyled"><a href="">About Us</a></li>
+             </ul>
+            <!-- shows in small screens -->
+            <figure class="d-flex d-md-none d-lg-none d-xl-none d-xxl-none">
+                <a href="#"><i class="fas fa-bars"></i></a>
+            </figure>
+        </nav>
+    </header>
+
+    <!-- main content -->
+    <main class="container-fluid d-flex h-100">
+        <form action="" method="POST" class="d-flex login-form">
+            <!-- sign in title (small size) -->
+            <div class="container-fluid sign-in-small d-flex d-lg-none d-xl-none d-xxl-none">
+                <h1>Sign in</h1>
+                <p>Don't have an account? <a href="">Sign up</a></p>
+            </div>
+            <!-- sign in title (large size) -->
+            <div class="container-fluid sign-in-large d-none d-lg-flex d-xl-flex d-xxl-flex">
+                <div class="form-wordlines">
+                    <h1>Sign in</h1>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos ea accusantium neque libero earum </p>
+                </div>
+                <p>Don't have an account? <a href="">Sign up</a></p>
+            </div>
+
+            <!-- email address and password inputs -->
+            <div class="container-fluid inputs d-flex d-lg-flex d-xxl-flex">
+                <!-- for email-address -->
+                <div class="input-group mb-3">
+                    <input type="email" class="form-control" placeholder="Email address" aria-label="Email address" aria-describedby="email-addon1">
+                </div>
+                <!-- for password -->
+                <div class="input-group mb-2">
+                    <input type="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="password-addon1">
+                </div>
+                <a href="">Forgot password</a>
+                <button type="submit" method="POST" class="btn btn-primary w-100 mt-3 mt-lg-4 mt-xxl-5">Sign in</button>
+            </div>
+        </form>
+    </main>
+
+    <!-- footer section -->
+    <footer class="container-fluid d-flex w-100">
+        <!-- copyrights -->
+         <div class="copyrights">
+            <p>Copyright &copy; 2025 Balolong Inc.</p>
+         </div>
+    </footer>
+</body>
+</html>
