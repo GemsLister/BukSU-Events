@@ -1,18 +1,24 @@
+<?php
+
+session_start(); 
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign up</title>
-    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css"> 
-    <link rel="stylesheet" href="../fontawesome-free-6.7.2-web/css/all.min.css">
-    <link rel="stylesheet" href="sign-up.css">
+    <link rel="stylesheet" href="../BukSU-Hub-Event-Management/bootstrap/css/bootstrap.min.css"> 
+    <link rel="stylesheet" href="../BukSU-Hub-Event-Management/fontawesome-free-6.7.2-web/css/all.min.css">
+    <link rel="stylesheet" href="../BukSU-Hub-Event-Management/css-style/sign-up.css">
 </head>
 <body>
     <!-- header section -->
     <header class="container-fluid d-flex">
         <figure class="col-3 d-flex">
-            <img src="../images/buksu_events_logo.png" alt="buksu-event-logo" class="logo">
+            <img src="../BukSU-Hub-Event-Management/images/buksu_events_logo.png" alt="buksu-event-logo" class="logo">
         </figure>
 
         <!-- Navigation -->
@@ -34,7 +40,7 @@
 
     <!-- main content -->
     <main class="container-fluid d-flex h-100">
-        <form action="" method="POST" class="d-flex login-form">
+        <form action="sign-up.php" method="POST" class="d-flex login-form">
             <!-- sign in title (small size) -->
             <div class="container-fluid sign-in-small d-flex d-lg-none d-xl-none d-xxl-none">
                 <h1>Sign up</h1>
@@ -53,17 +59,20 @@
             <div class="container-fluid inputs d-flex d-lg-flex d-xxl-flex">
                 <!-- First name and Last name -->
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="First name" aria-label="First name" aria-describedby="email-addon1">
-                    <input type="text" class="form-control" placeholder="Last name" aria-label="Last name" aria-describedby="email-addon1">
+                    <input type="text" class="form-control" placeholder="Fullname" name="fullname" aria-label="Fullname" aria-describedby="fullname-addon1">
                 </div>
                 
                 <!-- for email-address -->
                 <div class="input-group mb-3">
-                    <input type="email" class="form-control" placeholder="Email address" aria-label="Email address" aria-describedby="email-addon1">
+                    <input type="email" class="form-control" placeholder="Email address" name="email" aria-label="Email address" aria-describedby="email-addon1">
                 </div>
                 <!-- for password -->
+                <div class="input-group mb-3">
+                    <input type="password" class="form-control" placeholder="Password" name="password" aria-label="Password" aria-describedby="password-addon1">
+                </div>
+                <!-- confirm password -->
                 <div class="input-group mb-2">
-                    <input type="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="password-addon1">
+                    <input type="password" class="form-control" placeholder="Confirm Password" name="confirm_password" required>
                 </div>
                 <button type="submit" method="POST" class="btn btn-primary w-100 mt-3 mt-lg-4 mt-xxl-5">Sign up</button>
             </div>
@@ -77,5 +86,6 @@
             <p>Copyright &copy; 2025 Balolong Inc.</p>
          </div>
     </footer>
+    <script src="../bootstrap/js/bootstrap.bundle.js"></script>
 </body>
 </html>
