@@ -1,9 +1,8 @@
 <?php
-
 $servername = 'localhost';
 $username = 'root';
 $password = '';
-$dbname = 'buksu-events';
+$dbname = "buksu_events";
 
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 

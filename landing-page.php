@@ -1,19 +1,23 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BukSU Events</title>
-    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../fontawesome-free-6.7.2-web/css/all.min.css">
-    <link rel="stylesheet" href="css-style/land-page.css">
+    <link rel="stylesheet" href="../BukSU-Events/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../BukSU-Events/fontawesome-free-6.7.2-web/css/all.min.css">
+    <link rel="stylesheet" href="../BukSU-Events/css-style/land-page.css">
 </head>
 <body>
     <header>
         <!-- Upper -->
         <div class="upper d-flex align-items-center">
             <figure class="d-flex justify-content-between align-items-center w-100 p-3">
-                <img src="../images/buksu_events_logo.png" alt="web-logo">
+                <img src="../BukSU-Events/images/buksu_events_logo.png" alt="web-logo">
                 <div class="menu d-flex align-items-center d-sm-none">
                     <a href=""><i class="fas fa-bars"></i></a>
                 </div>
@@ -35,13 +39,13 @@
             <div id="web-carousel" class="w-carousel carousel slide d-none d-sm-flex" data-bs-ride="carousel">
                 <div class="carousel-inner c-inner d-sm-flex justify-content-sm-flex-start">
                     <div class="carousel-item c-item active">
-                        <img src="../images/connect.png" alt="booking image">
+                        <img src="../BukSU-Events/images/connect.png" alt="booking image">
                     </div>
                     <div class="carousel-item c-item">
-                        <img src="../images/enjoy.png" class="c-img" alt="...">
+                        <img src="../BukSU-Events/images/enjoy.png" class="c-img" alt="...">
                     </div>
                     <div class="carousel-item c-item">
-                        <img src="../images/innovate.png" class="c-img" alt="...">
+                        <img src="../BukSU-Events/images/innovate.png" class="c-img" alt="...">
                     </div>
                 </div>
             </div>
@@ -61,13 +65,13 @@
             <div id="web-carousel" class="w-carousel d-sm-none carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner c-inner">
                     <div class="carousel-item c-item active">
-                        <img src="../images/connect.png" alt="booking image">
+                        <img src="../BukSU-Events/images/connect.png" alt="booking image">
                     </div>
                     <div class="carousel-item c-item">
-                        <img src="../images/enjoy.png" class="c-img" alt="...">
+                        <img src="../BukSU-Events/images/enjoy.png" class="c-img" alt="...">
                     </div>
                     <div class="carousel-item c-item">
-                        <img src="../images/innovate.png" class="c-img" alt="...">
+                        <img src="../BukSU-Events/images/innovate.png" class="c-img" alt="...">
                     </div>
                 </div>
             </div>
@@ -115,7 +119,7 @@
                     <h1>Current Event</h1>
                 </div>
                 <div class="card current-event-card h-25">
-                    <img src="../images/wide_orientation.png" class="card-img-top" alt="...">
+                    <img src="../BukSU-Events/images/wide_orientation.png" class="card-img-top" alt="...">
                     <div class="card-body">
                         <div class="event-name-text">
                             <h6>JAN <span>12</span> - University-Wide Orientation</h6>
@@ -134,7 +138,7 @@
                 <div class="cards-container d-none d-sm-grid d-lg-grid">
                     <!-- First card -->
                     <div class="card f-card1">
-                        <img src="../images/second_gen_assembly.png" class="card-img-top" alt="...">
+                        <img src="../BukSU-Events/second_gen_assembly.png" class="card-img-top" alt="...">
                         <div class="card-body">
                             <div class="event-name-text">
                                 <h6>JAN <span>16</span> - Level Up: Together Toward Greater Challenges and Victories</h6>
@@ -144,7 +148,7 @@
                     </div>
                     <!-- Second card -->
                     <div class="card f-card2">
-                        <img src="../images/exciting_raffle_promo.png" class="card-img-top" alt="...">
+                        <img src="../BukSU-Events/exciting_raffle_promo.png" class="card-img-top" alt="...">
                         <div class="card-body">
                             <div class="event-name-text">
                                 <h6>JAN <span>20</span> - Exciting Raffle Promo Awaits!!</h6>
@@ -154,7 +158,7 @@
                     </div>
                     <!-- Third card -->
                     <div class="card f-card3">
-                        <img src="../images/buksu_one.png" class="card-img-top" alt="...">
+                        <img src="../BukSU-Events/buksu_one.png" class="card-img-top" alt="...">
                         <div class="card-body">
                             <div class="event-name-text">
                                 <h6>JAN <span>20</span> - The Stage is Set: BukSUONE is Here!</h6>
@@ -164,7 +168,7 @@
                     </div>
                     <!-- Fourth card -->
                     <div class="card f-card4 d-lg-flex">
-                        <img src="../images/buksu_intrams.png" class="card-img-top" alt="...">
+                        <img src="../BukSU-Events/buksu_intrams.png" class="card-img-top" alt="...">
                         <div class="card-body">
                             <div class="event-name-text">
                                 <h6>MAR <span>10</span> - BUKSU INTRAMURALS</h6>
@@ -174,7 +178,7 @@
                     </div>
                     <!-- Fifth card -->
                     <div class="card f-card5 d-none d-lg-flex d-sm-none">
-                        <img src="../images/buksu_intrams_parade.png" class="card-img-top" alt="...">
+                        <img src="../BukSU-Events/buksu_intrams_parade.png" class="card-img-top" alt="...">
                         <div class="card-body">
                             <div class="event-name-text">
                                 <h6>MAR <span>10</span> - BUKSU INTRAMURALS</h6>
@@ -184,7 +188,7 @@
                     </div>
                     <!-- Sixth card -->
                     <div class="card f-card6 d-none d-lg-flex d-sm-none">
-                        <img src="../images/closing_intrams.png" class="card-img-top" alt="...">
+                        <img src="../BukSU-Events/closing_intrams.png" class="card-img-top" alt="...">
                         <div class="card-body">
                             <div class="event-name-text">
                                 <h6>MAR <span>10</span> - BUKSU INTRAMURALS</h6>
@@ -197,7 +201,7 @@
                 <div class="cards-container-mobile d-flex flex-column align-items-center gap-4 d-sm-none">
                     <!-- First card -->
                     <div class="card">
-                        <img src="../images/second_gen_assembly.png" class="card-img-top" alt="...">
+                        <img src="../BukSU-Events/second_gen_assembly.png" class="card-img-top" alt="...">
                         <div class="card-body">
                             <div class="event-name-text">
                                 <h6>JAN <span>16</span> - Level Up: Together Toward Greater Challenges and Victories</h6>
@@ -207,7 +211,7 @@
                     </div>
                     <!-- Second card -->
                     <div class="card">
-                        <img src="../images/exciting_raffle_promo.png" class="card-img-top" alt="...">
+                        <img src="../BukSU-Events/exciting_raffle_promo.png" class="card-img-top" alt="...">
                         <div class="card-body">
                             <div class="event-name-text">
                                 <h6>JAN <span>20</span> - Exciting Raffle Promo Awaits!!</h6>
@@ -217,7 +221,7 @@
                     </div>
                     <!-- Third card -->
                     <div class="card">
-                        <img src="../images/buksu_intrams.png" class="card-img-top" alt="...">
+                        <img src="../BukSU-Events/buksu_intrams.png" class="card-img-top" alt="...">
                         <div class="card-body">
                             <div class="event-name-text">
                                 <h6>MAR <span>10</span> - BUKSU INTRAMURALS</h6>
@@ -241,17 +245,17 @@
             <div class="department d-flex flex-column align-items-center flex-sm-row justify-content-sm-center">
                 <div class="upper">
                     <figure class="d-flex gap-3">
-                        <img src="../images/cas_college.png" alt="cas">
-                        <img src="../images/cob_college.png" alt="cob">
-                        <img src="../images/coe_college.png" alt="coe">
-                        <img src="../images/law_college.png" alt="law">
+                        <img src="../BukSU-Events/images/cas_college.png" alt="cas">
+                        <img src="../BukSU-Events/images/cob_college.png" alt="cob">
+                        <img src="../BukSU-Events/images/coe_college.png" alt="coe">
+                        <img src="../BukSU-Events/images/law_college.png" alt="law">
                     </figure>
                 </div>
                 <div class="lower d-flex gap-3">
                     <figure>
-                        <img src="../images/con_college.png" alt="con">
-                        <img src="../images/cpag_college.png" alt="cpag">
-                        <img src="../images/cot_college.png" alt="cot">
+                        <img src="../BukSU-Events/images/con_college.png" alt="con">
+                        <img src="../BukSU-Events/images/cpag_college.png" alt="cpag">
+                        <img src="../BukSU-Events/images/cot_college.png" alt="cot">
                     </figure>
                 </div>
             </div>
@@ -262,7 +266,7 @@
         <div class="copyrights">
             <figure class="d-flex flex-column align-items-center">
                 <div class="web-logo mb-3">
-                    <img src="../images/buksu_events_logo.png" alt="web-logo">
+                    <img src="../BukSU-Events/images/buksu_events_logo.png" alt="web-logo">
                 </div>
                 <div class="web-icons d-flex gap-3">
                     <a href=""><i class="fa-brands fa-facebook"></i></a>
@@ -274,6 +278,6 @@
             </figure>
         </div>
     </footer>
-    <script src="../bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="../BukSU-Events/bootstrap/js/bootstrap.bundle.js"></script>
 </body>
 </html>

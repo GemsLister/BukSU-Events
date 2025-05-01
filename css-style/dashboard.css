@@ -1,0 +1,215 @@
+/* Regular Rubik */
+@font-face {
+    font-family: "Roboto";
+    src: url(../roboto_static/Roboto-Regular.ttf);
+}
+/* Bold Roboto */
+@font-face {
+    font-family: "Roboto-Bold";
+    src: url(../roboto_static/Roboto-Bold.ttf);
+}
+
+@font-face {
+    font-family: "Roboto-SemiBold";
+    src: url(../roboto_static/Roboto-SemiBold.ttf);
+}
+
+:root{
+    --linear-pink: rgba(237, 70, 145, 0.623);
+    --dark-pink: rgb(235, 50, 133);
+    --darker-pink: rgb(200, 40, 110);
+    --linear-purple: rgba(85, 34, 204, 0.733);
+    --darker-purple: rgb(85, 34, 204);
+    --light-royal-blue: #4943F2;
+    --orange-peel: #E57930;
+    --dark-blue: #242565;
+    --darker-blue: #13133b;
+    --grayish-white: #dfdfdf83;
+    --box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    --gray-font: #b9b6b6;
+    --cyan-blue-azure: #3D85C0;
+    --dark-gray: #DBDBDB;
+}
+
+
+header{
+    background-image: linear-gradient(to right, var(--linear-pink), var(--linear-purple)),
+    url(../images/buksu-image.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    align-items: center;
+}
+
+/* Website logo */
+header figure img{
+    height: clamp(50px, 7vw, 95px);
+    width: clamp(50px, 7vw, 95px);
+}
+
+header figure a i{
+    color: white;
+    font-size: clamp(23px, 2vw, 33px);
+}
+
+footer{
+    justify-content: center;
+    align-items: center;
+    background-color: var(--dark-blue);
+    color: white;
+}
+
+footer .copyrights p{
+    font-family: "Roboto";
+    font-size: clamp(11px, 2vw, 15px);  
+}
+
+@media (min-width: 320px) and (max-width: 992px) {
+    html body{
+        grid-template-rows: 100px auto 80px;
+        grid-template-columns: 1fr;
+        height: 100vh;
+    }
+
+    header{
+        justify-content: space-between;
+    }
+
+     /* Sidebar styles */
+    .small-nav {
+        position: fixed;
+        top: 0;
+        right: -250px; /* Initially hidden */
+        width: 250px;
+        height: 100%;
+        background-color: white;
+        border-left: 1px solid var(--dark-gray);
+        color: var(--darker-blue);
+        transition: right 0.3s ease; /* Smooth slide-in effect */
+        z-index: 1000;
+        padding: 20px;
+    }
+
+    .small-nav ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .small-nav ul li {
+        margin: 20px 0;
+    }
+
+    .small-nav ul li a {
+        color: var(--darker-blue);
+        text-decoration: none;
+        font-family: "Roboto";
+        font-size: 18px;
+    }
+
+    .small-nav ul li a:hover {
+        color: var(--orange-peel);
+    }
+
+    /* Show sidebar when active */
+    .small-nav.active {
+        right: 0; /* Slide in */
+    }
+
+    /* Menu icon styles */
+    #menu-icon {
+        cursor: pointer;
+        font-size: 24px;
+        color: white;
+    }
+
+    /* Close button styles */
+    .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 24px;
+        color: var(--cyan-blue-azure);
+        cursor: pointer;
+        z-index: 1100;
+    }
+
+    .close-btn:hover {
+        color: var(--dark-blue); /* Highlight color on hover */
+    }
+
+    .large-nav{
+        display: none;
+    }
+}
+
+@media (min-width: 993px) and (max-width: 2960px) {
+    html body{
+        grid-template-rows: 100px auto 80px;
+        grid-template-columns: 1fr;
+        height: 100vh;
+    }
+
+    header{
+        justify-content: space-around;
+    }
+
+    header nav .nav-list{
+        list-style: none;
+        gap: 20px;
+        font-family: 'Roboto';
+        font-size: clamp(15px, 1.5vw, 17px);
+    }
+
+    header nav .nav-list li a{
+        text-decoration: none;
+        color: white;
+    }
+
+    header figure img{
+        height: clamp(40px, 5vw, 70px);
+        width: clamp(40px, 5vw, 70px);
+    }
+
+    aside{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        grid-row: 1/4;
+        background-color: white;
+        border-right: 1.5px solid var(--gray-font);
+        font-family: 'Roboto';
+        padding: 0;
+        width: 100%;
+    }
+
+    aside nav{
+        width: 100%;
+    }
+
+    aside nav ul{
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        gap: 60px;
+    }
+
+    aside ul li{
+        list-style: none;
+    }
+
+    aside ul li a{
+        font-size: clamp(15px, 2vw, 20px);
+        text-decoration: none;
+        color: var(--darker-blue);
+    }
+
+
+    footer .copyrights p{
+        font-size: clamp(13px, 1vw, 20px);
+    }
+
+    #menu-icon,
+    .small-nav{
+        display: none;
+    }
+}
