@@ -1,5 +1,18 @@
 <?php
+// filepath: e:\xampp\htdocs\BukSU-Events\dashboard.php
+
 session_start();
+include 'db.php'; // Include the database connection file
+
+// Check if the admin is logged in
+if (!isset($_SESSION['admin_id'])) {
+    die("Error: Admin is not logged in. Please log in to access the dashboard.");
+}
+
+// Fetch event requests from the database
+$stmt = $pdo->prepare("SELECT e.*, u.email FROM events e JOIN users u ON e.user_id = u.user_id ORDER BY e.event_date_time DESC");
+$stmt->execute();
+$events = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -7,58 +20,50 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Admin Dashboard</title>
     <link rel="stylesheet" href="../BukSU-Events/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../BukSU-Events/fontawesome-free-6.7.2-web/css/all.min.css">
-    <link rel="stylesheet" href="../BukSU-Events/css-style/dashboard.css">
 </head>
-<body class="d-grid">
-    <!-- header section -->
-    <header class="container-fluid d-flex">
-        <figure>
-            <!-- website lgo -->
-            <img src="../BukSU-Events/images/buksu_events_logo.png" alt="buksu_events_logo" class="img-fluid">
-        </figure>
-        <figure>
-            <!-- menu icon -->
-            <a href="#" id="menu-icon"><i class="fas fa-bars"></i></a>
-        </figure>
-        <!-- for larger screens -->
-        <nav class="d-none d-lg-flex d-xl-flex d-xxl-flex">
-            <ul class="nav-list d-lg-flex d-xl-flex d-xxl-flex">
-                <li><a href="">Event History</a></li>
-                <li><a href="">Saved Events</a></li>
-                <li><a href="../BukSU-Events/logout.php">Logout</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <!-- for small screens sidebar -->
-     <aside id="small-sidebar" class="small-nav">
-        <a href="#" class="close-btn" id="close-sidebar"><i class="fa fa-times"></i></a>
-        <nav>
-            <ul class="d-flex flex-column gap-2">
-                <li><a href="">Event History</a></li>
-                <li><a href="">Saved Events</a></li>
-                <li><a href="../BukSU-Events/sign-in.php">Logout</a></li>
-            </ul>
-        </nav>
-     </aside>
-
-     
-
-     <!-- main content -->
-     <main>
-
-     </main>
-
-     <!-- footer section -->
-      <footer class="d-flex">
-        <div class="copyrights">
-            <p>&copy; 2025 BukSU Events. All rights reserved.</p>
-        </div>
-      </footer>
-     <script src="../BukSU-Events/jquery3.7.1.js"></script>
-     <script src="../BukSU-Events/script.js"></script>
+<body>
+    <div class="container mt-5">
+        <h1>Admin Dashboard</h1>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Event ID</th>
+                    <th>User Email</th>
+                    <th>Event Name</th>
+                    <th>Date & Time</th>
+                    <th>Type</th>
+                    <th>Audience</th>
+                    <th>Venue</th>
+                    <th>Mode</th>
+                    <th>Capacity</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($events as $event): ?>
+                    <tr>
+                        <td><?php echo $event['event_id']; ?></td>
+                        <td><?php echo $event['email']; ?></td>
+                        <td><?php echo $event['event_name']; ?></td>
+                        <td><?php echo $event['event_date_time']; ?></td>
+                        <td><?php echo $event['event_type']; ?></td>
+                        <td><?php echo $event['target_audience']; ?></td>
+                        <td><?php echo $event['venue']; ?></td>
+                        <td><?php echo $event['mode']; ?></td>
+                        <td><?php echo $event['capacity']; ?></td>
+                        <td><?php echo ucfirst($event['status']); ?></td>
+                        <td>
+                            <a href="approve-event.php?event_id=<?php echo $event['event_id']; ?>" class="btn btn-success btn-sm">Approve</a>
+                            <a href="reject-event.php?event_id=<?php echo $event['event_id']; ?>" class="btn btn-danger btn-sm">Reject</a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+    <script src="../BukSU-Events/bootstrap/js/bootstrap.bundle.js"></script>
 </body>
 </html>

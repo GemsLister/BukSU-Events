@@ -3,56 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <title>Book Demo</title>
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css"> 
     <link rel="stylesheet" href="../fontawesome-free-6.7.2-web/css/all.min.css">
-    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="sign-up.css">
 </head>
-<body class="d-grid">
+<body>
     <!-- header section -->
     <header class="container-fluid d-flex">
-        <figure>
-            <!-- website lgo -->
-            <img src="../images/buksu_events_logo.png" alt="buksu_events_logo" class="img-fluid">
+        <figure class="col-3 d-flex">
+            <img src="../images/buksu_events_logo.png" alt="buksu-event-logo" class="logo">
         </figure>
-        <figure>
-            <!-- menu icon -->
-            <a href="#" id="menu-icon"><i class="fas fa-bars"></i></a>
-        </figure>
-        <!-- for larger screens -->
-        <nav class="d-none d-lg-flex d-xl-flex d-xxl-flex">
-            <ul class="nav-list d-lg-flex d-xl-flex d-xxl-flex">
-                <li><a href="">Event History</a></li>
-                <li><a href="">Saved Events</a></li>
-                <li><a href="">Logout</a></li>
-            </ul>
+
+        <!-- Navigation -->
+        <!--for large screens  -->
+        <nav class="col-7 d-flex justify-content-end">
+            <!-- navigation links -->
+             <ul class="d-none d-md-flex d-lg-flex d-xl-flex d-xxl-flex gap-3 gap-xxl-5">
+                <li class="list-unstyled"><a href="">Home</a></li>
+                <li class="list-unstyled"><a href="">Colleges</a></li>
+                <li class="list-unstyled"><a href="">Events</a></li>
+                <li class="list-unstyled"><a href="">About Us</a></li>
+             </ul>
+            <!-- shows in small screens -->
+            <figure class="d-flex d-md-none d-lg-none d-xl-none d-xxl-none">
+                <a href="#"><i class="fas fa-bars"></i></a>
+            </figure>
         </nav>
     </header>
 
-    <!-- for small screens sidebar -->
-     <aside id="small-sidebar" class="small-nav">
-        <a href="#" class="close-btn" id="close-sidebar"><i class="fa fa-times"></i></a>
-        <nav>
-            <ul class="d-flex flex-column gap-2">
-                <li><a href="">Event History</a></li>
-                <li><a href="">Saved Events</a></li>
-                <li><a href="">Logout</a></li>
-            </ul>
-        </nav>
-     </aside>
+    <!-- main content -->
+    <main class="container-fluid d-flex h-100">
+        <form action="" method="POST" class="d-flex login-form">
+            <!-- sign in title (small size) -->
+            <div class="container-fluid sign-in-small d-flex d-lg-none d-xl-none d-xxl-none">
+                <h1>Request an Event</h1>
+                <p>Already have an account? <a href="">Sign in</a></p>
+            </div>
+            <!-- sign in title (large size) -->
+            <div class="container-fluid sign-in-large d-none d-lg-flex d-xl-flex d-xxl-flex">
+                <div class="form-wordlines">
+                    <h1>Request an Event</h1>
+                    <p>"Plan your event effortlessly—submit your request now!</p>
+                </div>
+                <p>Already have an account? <a href="">Sign in</a></p>
+            </div>
 
-     <!-- main content -->
-     <main>
+            <!-- email address and password inputs -->
+            <div class="container-fluid inputs d-flex d-lg-flex d-xxl-flex">
+                <!-- First name and Last name -->
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Fullname" aria-label="Fullname" aria-describedby="fullname-addon1">
+                </div>
+                
+                <!-- for email-address -->
+                <div class="input-group mb-3">
+                    <input type="email" class="form-control" placeholder="Email address" aria-label="Email address" aria-describedby="email-addon1">
+                </div>
+                <!-- for password -->
+                <div class="input-group mb-2">
+                    <input type="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="password-addon1">
+                </div>
+                <button type="submit" method="POST" class="btn btn-primary w-100 mt-3 mt-lg-4 mt-xxl-5">Sign up</button>
+            </div>
+        </form>
+    </main>
 
-     </main>
-
-     <!-- footer section -->
-      <footer class="d-flex">
-        <div class="copyrights">
-            <p>&copy; 2023 BukSU Events. All rights reserved.</p>
-        </div>
-      </footer>
-     <script src="jquery3.7.1.js"></script>
-     <script src="script.js"></script>
+    <!-- footer section -->
+    <footer class="container-fluid d-flex w-100">
+        <!-- copyrights -->
+         <div class="copyrights">
+            <p>Copyright &copy; 2025 Balolong Inc.</p>
+         </div>
+    </footer>
 </body>
 </html>

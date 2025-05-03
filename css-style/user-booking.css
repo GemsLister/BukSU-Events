@@ -47,7 +47,7 @@ header figure{
 }
 
 header figure img{
-    height: clamp(40px, 8vw, 95px);
+    height: clamp(50px, 4vw, 90px);
 } 
 
 /* menu icon */
@@ -59,7 +59,7 @@ header nav figure a i{
 
 header ul li a{
     color: white;
-    font-size: clamp(8px, 1.5vw, 19px);
+    font-size: clamp(3px, 1.7vw, 15px);
     text-decoration: none;
 }
 
@@ -67,48 +67,51 @@ header ul li a{
 main{
     justify-content: center;
     align-items: center;
+    padding: 20px;
 }
 
 main form{
-    /* background */
-    background-image: linear-gradient(175deg, var(--linear-pink), var(--linear-purple)), 
-    url(../images/buksu-image.jpg);
-    background-position: center;
-    background-size: cover;
-    align-items: center;
-    height: clamp(400px, 40vh, 850px);
-    box-shadow: var(--box-shadow);
+    background-color: transparent;
+    align-items: space-around;
     border-radius: 20px;
 }
 
 /* for mobile */
-main form .sign-in-small{
+main form .container-fluid .booking-small{
     flex-direction: column;
     align-items: center;
-    padding: 10px;
+    /* padding: 10px; */
 }
 
-main form .sign-in-small h1{
+main form .booking-small h1{
     font-family: 'Roboto-Bold';
-    font-size: clamp(35px, 4vw, 50px);
+    font-size: clamp(30px, 4vw, 50px);
 }
 
-main form .sign-in-small h1,
-main form .inputs a,
-main form .sign-in-small a,
-main form .sign-in-small p{
-    color: white;
+main form .inputs .booking-small a{
+    color: var(--cyan-blue-azure);
+    font-size: clamp(12.3px, 1vw, 15px);
 }
 
-main form .sign-in-small p{
+main form .booking-small h1,
+main form .booking-small p{
+    color: var(--dark-blue);
+}
+
+main form .booking-small p{
     font-family: 'Roboto';
     justify-content: center;
     align-items: center;
-    font-size: clamp(12.3px, 2.8vw, 15px);
+    font-size: clamp(12px, 1vw, 15px);
 }
 
 main form a{
     text-decoration: none;
+}
+
+main form .warning-message{
+    color: var(--dark-blue);
+    font-size: clamp(12px, 3vw, 16px);
 }
 
 main form .inputs input{
@@ -121,13 +124,17 @@ main form .inputs a{
     font-weight: 500;
 }
 
-main .sign-in-small a{
+main .booking-small a{
     font-family: 'Roboto-Bold';
     font-size: clamp(12.5px, 2.8vw, 15px);
 }
 
 main form .inputs a{
     font-size: clamp(12.5px, 2.8vw, 15px);
+}
+
+main form .inputs .roles label{
+    color: var(--cyan-blue-azure);
 }
 
 main form .inputs button{
@@ -141,33 +148,23 @@ main form .inputs button:hover{
 }
 
 /* laptop and desktop */
-main form{ 
-    /* display */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    gap: 30px;
-    width: clamp(320px, 100vw, 700px);
-}
-
-main form .sign-in-large{
+main form .booking-large{
     color: white;
     flex-direction: column;
     justify-content: space-around;
     height: clamp(350px, 80vw, 50%);
 }
 
-main form .sign-in-large h1{
+main form .booking-large h1{
     font-family: 'Roboto-Bold';
-    font-size: clamp(35px, 4vw, 48px);
+    font-size: clamp(30px, 4vw, 40px);
 }
 
-main form .sign-in-large p{
+main form .booking-large p{
     font-family: 'Roboto';
 }
 
-main form .sign-in-large a{
+main form .booking-large a{
     font-family: 'Roboto-Bold';
     color: white;
     font-size: clamp(10px, 5vw, 16px);
@@ -178,16 +175,17 @@ main form .inputs{
     justify-content: center;
     border-radius: 10px;
     background-color: white;
-    height: clamp(300px, 80vw, 10%);
-    padding: 8px;
-    width: 95%;
+    height: clamp(500px, 10vw, 60%);
+    gap: 10px;
 }
 
 main form .inputs a{
     font-size: clamp(10px, 4vw, 14px);
 }
 
-main form .inputs input{
+main form .inputs input,
+main form .input-group select,
+main form .input-group textarea{
     padding: 4px;
     font-size: clamp(10px, 3vw, 16px);
     width: 90%;
@@ -205,7 +203,7 @@ footer{
 @media screen and (min-width: 320px) and (max-width: 992px) {
     html body{
         display: grid;
-        grid-template-rows: 90px 1fr 80px;
+        grid-template-rows: 70px 1fr 65px;
         grid-template-columns: 1fr;
         height: 100vh;
     }
@@ -215,7 +213,6 @@ footer{
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        
         width: clamp(380px, 50vw, 470px);
     }
 
@@ -224,14 +221,19 @@ footer{
     }
 
     main form .inputs{
-        background-color: white;
+        background-color: transparent;
         width: 90%;
     }
 
-    main form .inputs a{
-        color: white;
+    main form .inputs textarea{
+        resize: none; /* Prevent resizing */
+        height: 100px; /* Set a fixed height */
+        width: 100%; /* Set a fixed width */
+        padding: 10px; /* Add padding for better readability */
+        font-size: clamp(12px, 2vw, 16px); /* Ensure responsive font size */
+        border-radius: 5px; /* Optional: Add rounded corners */
     }
-
+    
     footer{
         grid-row: 3;
         grid-column: 1;
@@ -246,58 +248,108 @@ footer{
         height: 100vh;
     }
 
-    main form .inputs{
+    main form{ 
+        /* background */
+        background-image: linear-gradient(175deg, var(--linear-pink), var(--linear-purple)), 
+        url(../images/buksu-image.jpg);
+        background-position: center;
+        background-size: cover;
+        /* display */
+        justify-content: space-around;
+        align-items: center;
         padding: 20px;
-        width: 90%;
+        gap: 30px;
+        height: clamp(400px, 100vw, 550px);
+        width: clamp(320px, 100vw, 700px);
+    }
+
+    main form .inputs{
+        padding: 30px;
+        height: 100%;
+        width: 95%;
+    }
+
+    main form .inputs input{
+        padding: 15px;
+        height: 30px;
+        width: 95%;
+    }
+
+    main form .inputs textarea{
+        resize: none; /* Prevent resizing */
+        height: 100px; /* Set a fixed height */
+        width: 100%; /* Set a fixed width */
+        padding: 10px; /* Add padding for better readability */
+        font-size: clamp(12px, 2vw, 16px); /* Ensure responsive font size */
+        border: 1px solid var(--gray-font); /* Optional: Add a border */
+        border-radius: 5px; /* Optional: Add rounded corners */
     }
 }
 
 @media screen and (min-width: 1441px) and (max-width: 2560px){
     html body{
         display: grid;
-        grid-template-rows: 130px auto 70px;
+        grid-template-rows: 30px auto 70px;
         grid-template-columns: 1fr;
         height: 100vh;
     }
 
     main form{
-        height: clamp(200px, 40vw, 500px);
-        width: clamp(600px, 90vw, 1000px);
+        /* background */
+        background-image: linear-gradient(175deg, var(--linear-pink), var(--linear-purple)), 
+        url(../images/buksu-image.jpg);
+        background-position: center;
+        background-size: cover;
+        /* display */
+        justify-content: space-around;
+        align-items: center;
+        padding: 20px;
+        gap: 30px;
+        height: clamp(600px, 20vw, 300px);
+        width: clamp(900px, 90vw, 850px);
     }
 
     main form .inputs{
-        border: 1px solid black;
-        height: 90px;
-        /* padding: 27px; */
+        height: 100%;
+        padding: 30px;
         width: 95%;
     }
     
+    main form .inputs textarea{
+        resize: none; /* Prevent resizing */
+        height: 100px; /* Set a fixed height */
+        width: 100%; /* Set a fixed width */
+        padding: 10px; /* Add padding for better readability */
+        font-size: clamp(12px, 2vw, 16px); /* Ensure responsive font size */
+        border-radius: 5px; /* Optional: Add rounded corners */
+    }
+
     main form .inputs a{
         font-size: clamp(9px, 1vw, 17px);
     }
     
     main form .inputs input{
-        padding: 8px;
-        font-size: clamp(18px, 2vw, 19px);
+        padding: 6.5px;
+        font-size: clamp(15px, 2vw, 17px);
         width: 90%;
     }
 
-    main form .sign-in-large h1{
-        font-size: clamp(18px, 4vw, 63px);
+    main form .booking-large h1{
+        font-size: clamp(18px, 4vw, 55px);
     }
 
     main form .inputs button{
-        padding: 10px;
-        margin: 500px 0 0 0;
-        font-size: clamp(18px, 2vw, 19px);
+        padding: 6.5px;
+        margin: 20px 0 0 0;
+        font-size: clamp(15px, 2vw, 17px);
     }
 
-    main form .sign-in-large p{
+    main form .booking-large p{
         font-family: 'Roboto';
-        font-size: clamp(10px, 5vw, 19.3px);
+        font-size: clamp(8px, 5vw, 17px);
     }
 
-    main form .sign-in-large a{
-        font-size: clamp(10px, 5vw, 19.3px);
+    main form .booking-large a{
+        font-size: clamp(8px, 5vw, 17px);
     }
 }

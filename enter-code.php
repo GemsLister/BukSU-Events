@@ -93,7 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </div>
                 <!-- for code -->
                 <div class="input-group">
-                    <input type="number" class="form-control" placeholder="Enter code" name="code" aria-label="Enter code" aria-describedby="code-addon1" required>
+                    <input type="number" class="form-control" placeholder="Enter code" name="code" aria-label="Enter code" aria-describedby="code-addon1" required maxlength="6" minlength="6">
                 </div>
                 <button type="submit" method="POST" class="btn btn-primary w-100 mt-2">Submit</button>
             </div>
