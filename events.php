@@ -1,35 +1,18 @@
 <?php
-// filepath: e:\xampp\htdocs\BukSU-Events\dashboard.php
+// filepath: e:\xampp\htdocs\BukSU-Events\events.php
 
 session_start();
 include 'db.php'; // Include the database connection file
 
 // Check if the admin is logged in
 if (!isset($_SESSION['admin_id'])) {
-    die("Error: Admin is not logged in. Please log in to access the events page.");
+    die("Error: Admin is not logged in.");
 }
 
-// Fetch approved events with user details
-$stmtApproved = $pdo->prepare("
-    SELECT e.*, u.firstname, u.lastname, u.contact_no, u.role, u.email 
-    FROM events e 
-    JOIN users u ON e.user_id = u.user_id 
-    WHERE e.status = 'approved' 
-    ORDER BY e.event_date_time ASC
-");
+// Fetch approved events from the database
+$stmtApproved = $pdo->prepare("SELECT * FROM events WHERE status = 'approved' ORDER BY event_date_time ASC");
 $stmtApproved->execute();
 $approvedEvents = $stmtApproved->fetchAll(PDO::FETCH_ASSOC);
-
-// Fetch requested events (pending approval) with user details
-$stmtRequested = $pdo->prepare("
-    SELECT e.*, u.firstname, u.lastname, u.contact_no, u.role, u.email 
-    FROM events e 
-    JOIN users u ON e.user_id = u.user_id 
-    WHERE e.status = 'pending' 
-    ORDER BY e.event_date_time ASC
-");
-$stmtRequested->execute();
-$requestedEvents = $stmtRequested->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -37,7 +20,7 @@ $requestedEvents = $stmtRequested->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Events</title>
     <link rel="stylesheet" href="../BukSU-Events/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../BukSU-Events/fontawesome-free-6.7.2-web/css/all.min.css">
     <link rel="stylesheet" href="../BukSU-Events/css-style/dashboard.css">
@@ -50,64 +33,55 @@ $requestedEvents = $stmtRequested->fetchAll(PDO::FETCH_ASSOC);
             <figcaption>Welcome Admin!</figcaption>
         </figure>
         <nav class="nav flex-column">
-            <a href="dashboard.php" class="nav-link active"><i class="fas fa-home"></i> Dashboard</a>
-            <a href="events.php" class="nav-link"><i class="fas fa-calendar-alt"></i> Events</a>
-            <a  href="land-page.php" class="nav-link"><i class="fas fa-sign-out"></i>Sign out</a>
+            <a href="dashboard.php" class="nav-link"><i class="fas fa-home"></i> Dashboard</a>
+            <a href="events.php" class="nav-link active"><i class="fas fa-calendar-alt"></i> Events</a>
+            <a  href="logout.php" class="nav-link"><i class="fas fa-sign-out"></i>Sign out</a>
         </nav>
     </aside>
 
     <!-- Main Content -->
     <main class="main-content">
-        
-
-        <!-- Requested Events Table -->
-        <div class="request-table container mt-4">
-            <h2>Requested Events</h2>
+        <!-- Approved Events Table -->
+        <div class="container mt-4">
+            <h2>Approved Events</h2>
             <div class="table-responsive">
                 <table class="table table-bordered">
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Firstname</th>
-                            <th>Lastname</th>
-                            <th>Contact No</th>
-                            <th>Role</th>
-                            <th>Email</th>
                             <th>Event Name</th>
                             <th>Venue</th>
                             <th>Date & Time</th>
                             <th>Type</th>
                             <th>Audience</th>
                             <th>Capacity</th>
-                            <th>Actions</th>
+                            <th>Postpone</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php if (count($requestedEvents) > 0): ?>
-                            <?php foreach ($requestedEvents as $index => $event): ?>
+                        <?php if (count($approvedEvents) > 0): ?>
+                            <?php foreach ($approvedEvents as $index => $event): ?>
                                 <tr>
                                     <td><?php echo $index + 1; ?></td>
-                                    <td><?php echo htmlspecialchars($event['firstname']); ?></td>
-                                    <td><?php echo htmlspecialchars($event['lastname']); ?></td>
-                                    <td><?php echo htmlspecialchars($event['contact_no']); ?></td>
-                                    <td><?php echo htmlspecialchars($event['role']); ?></td>
-                                    <td><?php echo htmlspecialchars($event['email']); ?></td>
                                     <td><?php echo htmlspecialchars($event['event_name']); ?></td>
                                     <td><?php echo htmlspecialchars($event['venue']); ?></td>
                                     <td><?php echo htmlspecialchars($event['event_date_time']); ?></td>
                                     <td><?php echo htmlspecialchars($event['event_type']); ?></td>
                                     <td><?php echo htmlspecialchars($event['target_audience']); ?></td>
                                     <td><?php echo htmlspecialchars($event['capacity']); ?></td>
-                                    
                                     <td class="d-flex gap-3">
-                                        <a href="approve-event.php?event_id=<?php echo $event['event_id']; ?>" class="btn btn-success btn-sm">Approve</a>
-                                        <a href="reject-event.php?event_id=<?php echo $event['event_id']; ?>" class="btn btn-danger btn-sm">Reject</a>
+                                        <a href="postpone-event.php?event_id=<?php echo $event['event_id']; ?>" class="btn btn-warning btn-sm" onclick="return confirm('Are you sure you want to delete this event?');">Postpone</a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
+                            <?php if (isset($_SESSION['success'])): ?>
+                                <div class="alert alert-success">
+                                    <?php echo $_SESSION['success']; unset($_SESSION['success']); ?>
+                                </div>
+                            <?php endif; ?>
                         <?php else: ?>
                             <tr>
-                                <td colspan="13" class="text-center">No requested events found.</td>
+                                <td colspan="8" class="text-center">No approved events found.</td>
                             </tr>
                         <?php endif; ?>
                     </tbody>

@@ -284,6 +284,10 @@ footer{
         border: 1px solid var(--gray-font); /* Optional: Add a border */
         border-radius: 5px; /* Optional: Add rounded corners */
     }
+
+    .form-wordlines h5.text-success{
+        color: white;
+    }
 }
 
 @media screen and (min-width: 1441px) and (max-width: 2560px){
@@ -351,5 +355,9 @@ footer{
 
     main form .booking-large a{
         font-size: clamp(8px, 5vw, 17px);
+    }
+
+    .form-wordlines h5.text-success{
+        color: white;
     }
 }

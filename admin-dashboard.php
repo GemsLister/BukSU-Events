@@ -1,12 +1,16 @@
 <?php
-// filepath: e:\xampp\htdocs\BukSU-Events\scratches\admin-dashboard.php
+session_start();
+include 'db.php'; // Include the database connection file
 
-// Include the database connection file
-require_once '../db.php'; // Adjust the path based on your file structure
+// Check if the admin is logged in
+if (!isset($_SESSION['admin_id'])) {
+    die("Error: Admin is not logged in. Please log in to access the dashboard.");
+}
 
-// Fetch pending events from the events table
-$sql = "SELECT event_id, event_name, event_date, status, venue FROM events WHERE status = 'pending'";
-$result = $conn->query($sql);
+// Fetch event requests from the database
+$stmt = $pdo->prepare("SELECT e.*, u.email FROM events e JOIN users u ON e.user_id = u.user_id ORDER BY e.event_date_time DESC");
+$stmt->execute();
+$events = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -37,25 +41,46 @@ $result = $conn->query($sql);
     </header>
     
     <main class="container-fluid">
-        <section class="pending-events">
-            <h2>Pending Events</h2>
-            <div id="events-container">
-                <?php
-                    if ($result->num_rows > 0) {
-                        while ($row = $result->fetch_assoc()) {
-                            echo "<div class='event-item'>";
-                            echo "<h3>" . htmlspecialchars($row['event_name']) . "</h3>";
-                            echo "<p>Date: " . htmlspecialchars($row['event_date']) . "</p>";
-                            echo "<p>Venue: " . htmlspecialchars($row['venue']) . "</p>";
-                            echo "<p>Status: " . htmlspecialchars($row['status']) . "</p>";
-                            echo "</div>";
-                        }
-                    } else {
-                        echo "<p>No pending events.</p>";
-                    }
-                ?>
-            </div>
-        </section>
+        <div class="container mt-5">
+            <h1>Admin Dashboard</h1>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Event ID</th>
+                        <th>User Email</th>
+                        <th>Event Name</th>
+                        <th>Date & Time</th>
+                        <th>Type</th>
+                        <th>Audience</th>
+                        <th>Venue</th>
+                        <th>Mode</th>
+                        <th>Capacity</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($events as $event): ?>
+                        <tr>
+                            <td><?php echo $event['event_id']; ?></td>
+                            <td><?php echo $event['email']; ?></td>
+                            <td><?php echo $event['event_name']; ?></td>
+                            <td><?php echo $event['event_date_time']; ?></td>
+                            <td><?php echo $event['event_type']; ?></td>
+                            <td><?php echo $event['target_audience']; ?></td>
+                            <td><?php echo $event['venue']; ?></td>
+                            <td><?php echo $event['mode']; ?></td>
+                            <td><?php echo $event['capacity']; ?></td>
+                            <td><?php echo ucfirst($event['status']); ?></td>
+                            <td>
+                                <a href="approve-event.php?event_id=<?php echo $event['event_id']; ?>" class="btn btn-success btn-sm">Approve</a>
+                                <a href="reject-event.php?event_id=<?php echo $event['event_id']; ?>" class="btn btn-danger btn-sm">Reject</a>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
     </main>
     <script src="../BukSU-Events/jquery3.7.1.js"></script>
     <script src="../BukSU-Events/script.js"></script>

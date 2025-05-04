@@ -8,7 +8,7 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Booking</title>
-    <link rel="stylesheet" href="../BukSU-Events//bootstrap/css/bootstrap.min.css"> 
+    <link rel="stylesheet" href="../BukSU-Events/bootstrap/css/bootstrap.min.css"> 
     <link rel="stylesheet" href="../BukSU-Events/fontawesome-free-6.7.2-web/css/all.min.css">
     <link rel="stylesheet" href="../BukSU-Events/css-style/user-booking.css">
 </head>
@@ -19,27 +19,12 @@ session_start();
 
     <!-- main content -->
     <main class="container-fluid d-flex h-100">
-        <!-- booking title (large size) -->
         <!-- booking form -->
         <form name="booking-form" action="submit-event-request.php" method="POST" class="d-flex login-form">
             <div class="container-fluid booking-large d-none d-lg-flex d-xl-flex d-xxl-flex">
                 <div class="form-wordlines">
                     <h1>Request an Event</h1>
                     <p>Plan your event effortlessly—submit your request now!</p>
-                </div>
-                <!-- message if email address already exists -->
-                <?php if(isset($_SESSION['error'])): ?>
-                    <h5 class="text-light">
-                        <?php echo $_SESSION['error']; unset($_SESSION['error']); ?>
-                    </h5>
-                <?php endif; ?>
-            </div>
-            <!-- booking inputs -->
-            <div class="container-fluid inputs d-flex d-lg-flex d-xxl-flex">
-                <!-- booking title (small size) --> 
-                <div class="container-fluid booking-small d-flex d-lg-none d-xl-none d-xxl-none">
-                    <h1>Request an Event</h1>
-                    <p>Plan your event effortlessly—submit your request now</p>
                     <!-- Success message -->
                     <?php if (isset($_SESSION['success'])): ?>
                         <h5 class="text-success">
@@ -53,21 +38,28 @@ session_start();
                         </h5>
                     <?php endif; ?>
                 </div>
+                <a href="logout.php" class="nav-link">Return to Landing Page</a>
+            </div>
+            <!-- booking inputs -->
+            <div class="container-fluid inputs d-flex d-lg-flex d-xxl-flex">
                 <!-- event name -->
-                 <div class="event-name d-flex gap-3">
+                <div class="event-name d-flex gap-3">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Event name" name="event_name" aria-label="Event name" aria-describedby="event_name-addon1" required>
+                        <input type="text" class="form-control" placeholder="Event name" name="event_name" required>
                     </div>
-                 </div>
-                 <!-- event date and time -->
-                 <div class="event-date d-flex gap-3">
+                </div>
+                <!-- event date and time -->
+                <div class="event-date d-flex gap-3">
                     <div class="input-group">
-                        <input type="datetime-local" class="form-control" placeholder="Event time" name="event_date_time" aria-label="Event time" aria-describedby="event_time-addon1" required>
+                        <input type="datetime-local" class="form-control" name="event_date_time" 
+                               min="<?php echo date('Y'); ?>-01-01T00:00" 
+                               max="<?php echo date('Y'); ?>-12-31T23:59" 
+                               required>
                     </div>
-                 </div>
-                 <!-- event type -->
-                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="e.g., Seminar, Workshop" name="event_type" aria-label="Event Type" aria-describedby="event_type-addon1" required>
+                </div>
+                <!-- event type -->
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="e.g., Seminar, Workshop" name="event_type" required>
                 </div>
                 <!-- target audience -->
                 <div class="input-group">
@@ -111,9 +103,9 @@ session_start();
     <!-- footer section -->
     <footer class="container-fluid d-flex w-100">
         <!-- copyrights -->
-         <div class="copyrights">
+        <div class="copyrights">
             <p>Copyright &copy; 2025 Balolong Inc.</p>
-         </div>
+        </div>
     </footer>
     <script src="../BukSU-Events/bootstrap/js/bootstrap.bundle.js"></script>
 </body>

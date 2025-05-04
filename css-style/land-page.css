@@ -283,6 +283,39 @@ footer figcaption{
     font-size: clamp(12px, 3vw, 1rem);
 }
 
+/* General Card Styling */
+.card {
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.card-body {
+    padding: 15px;
+}
+
+.event-name-text h6 {
+    font-size: 16px;
+    font-weight: bold;
+    color: #007bff;
+}
+
+.event-name-text p {
+    font-size: 14px;
+    color: #495057;
+}
+
 @media screen and (min-width: 319px) and (max-width: 575px) {
     html body{
         grid-template-rows: 0.8fr 2.5fr 0.3fr;
