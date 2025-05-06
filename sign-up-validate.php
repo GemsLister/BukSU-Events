@@ -5,7 +5,6 @@ include 'db.php'; // Include the database connection file
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $first_name = $_POST['firstname'];
     $last_name = $_POST['lastname'];
-    $role = $_POST['role'];
     $contact_no = $_POST['contact_no'];
     $email = $_POST['email'];
     $password = $_POST['password'];
@@ -27,10 +26,10 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     }
     
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-    $stmt = $pdo -> prepare("INSERT INTO users (firstname, lastname, contact_no, role, email, password) VALUES (?, ?, ?,?, ?, ?)");
+    $stmt = $pdo -> prepare("INSERT INTO users (firstname, lastname, contact_no, email, password) VALUES (?, ?,?, ?, ?)");
     
 
-    if($stmt -> execute([$first_name, $last_name, $contact_no, $role, $email, $hashed_password])){
+    if($stmt -> execute([$first_name, $last_name, $contact_no, $email, $hashed_password])){
         $_SESSION['success'] = "Sign up successful!";
         header("Location: sign-in.php");
         exit();    

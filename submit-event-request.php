@@ -49,6 +49,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header('Location: user-booking.php');
     }
 
+    $notify = $pdo -> prepare("SELECT * FROM events WHERE event_date_time = ?");
+    $notify -> execute([$event_date_time]);
+
     // Close the statement and connection
     $stmt->close();
     $conn->close();

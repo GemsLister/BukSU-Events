@@ -38,7 +38,7 @@ session_start();
                         </h5>
                     <?php endif; ?>
                 </div>
-                <a href="logout.php" class="nav-link">Return to Landing Page</a>
+                <a href="land-page.php" class="nav-link">Return to Landing Page</a>
             </div>
             <!-- booking inputs -->
             <div class="container-fluid inputs d-flex d-lg-flex d-xxl-flex">

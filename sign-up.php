@@ -62,7 +62,7 @@ session_start();
                     <input type="tel" class="form-control" placeholder="Contact number" name="contact_no" aria-label="Contact number" aria-describedby="contact-addon1" required>
                 </div>
                 <!-- for roles -->
-                <div class="roles d-flex gap-4">
+                <!-- <div class="roles d-flex gap-4">
                     <div class="form-check">
                         <input class="form-check-input w-25" type="radio" value="Student" id="student_role" name="role">
                         <label class="form-check-label" for="flexCheckDefault">
@@ -75,7 +75,7 @@ session_start();
                             Faculty
                         </label>
                     </div>
-                </div>
+                </div> -->
                 <!-- for email-address -->
                 <div class="input-group">
                     <input type="email" class="form-control" placeholder="Email address" name="email" aria-label="Email address" aria-describedby="email-addon1" required>

@@ -16,8 +16,8 @@ if (!filter_var($admin_email, FILTER_VALIDATE_EMAIL)) {
 }
 
 // Generate hashed password
-$admin_password = password_hash($admin_password_plain, PASSWORD_DEFAULT);
-echo "Generated Hash: " . $admin_password . "<br>";
+// $admin_password = password_hash($admin_password_plain, PASSWORD_DEFAULT);
+// echo "Generated Hash: " . $admin_password . "<br>";
 
 try {
     // Insert or update the admin account

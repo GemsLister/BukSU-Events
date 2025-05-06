@@ -38,11 +38,12 @@ $approvedEvents = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <li class="nav-item"><a href="#" class="nav-link text-white">Events</a></li>
                     <li class="nav-item"><a href="#" class="nav-link text-white">Colleges</a></li>
                     <li class="nav-item"><a href="#" class="nav-link text-white">About Us</a></li>
+                    <div class="sign-in-buttons d-flex align-items-center gap-3">
+                        <a href="sign-in.php" class="btn btn-outline-light d-none d-lg-flex">Sign-in</a>
+                        <a href="admin-sign-in.php" class="btn btn-outline-light d-none d-lg-flex">Admin Sign-in</a>
+                    </div>
                 </ul>
             </nav>
-            <div class="sign-in-buttons d-flex align-items-center gap-3">
-                <a href="user-or-admin.php" class="btn btn-outline-light d-none d-lg-flex">Sign-in</a>
-            </div>
         </div>
 
         <!-- Mobile Dropdown Menu -->

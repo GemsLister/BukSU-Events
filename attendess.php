@@ -59,8 +59,6 @@ $attendees = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <th>Email</th>
                             <th>Contact No</th>
                             <th>Event Name</th>
-                            <th>Section</th>
-                            <th>Major</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -73,8 +71,6 @@ $attendees = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                     <td><?php echo htmlspecialchars($attendee['email']); ?></td>
                                     <td><?php echo htmlspecialchars($attendee['contact_no']); ?></td>
                                     <td><?php echo htmlspecialchars($attendee['event_name']); ?></td>
-                                    <td><?php echo htmlspecialchars($attendee['section']); ?></td>
-                                    <td><?php echo htmlspecialchars($attendee['college']); ?></td>
                                 </tr>
                             <?php endforeach; ?>
                         <?php else: ?>

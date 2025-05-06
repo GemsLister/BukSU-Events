@@ -33,20 +33,24 @@ $approvedEvents = $stmtApproved->fetchAll(PDO::FETCH_ASSOC);
             <figcaption>Welcome Admin!</figcaption>
         </figure>
         <nav class="nav flex-column">
+            <div class="mb-3">
+                <input type="text" id="searchInput" class="form-control" placeholder="Search events...">
+            </div>
             <a href="dashboard.php" class="nav-link"><i class="fas fa-home"></i> Dashboard</a>
             <a href="events.php" class="nav-link active"><i class="fas fa-calendar-alt"></i> Events</a>
-            <a  href="logout.php" class="nav-link"><i class="fas fa-sign-out"></i>Sign out</a>
+            <a href="attendees.php" class="nav-link"><i class="fas fa-users"></i> Attendees</a>
+            <a  href="land-page.php" class="nav-link"><i class="fas fa-sign-out"></i>Sign out</a>
         </nav>
     </aside>
 
     <!-- Main Content -->
     <main class="main-content">
         <!-- Approved Events Table -->
-        <div class="container mt-4">
+        <div class="approved-events container mt-4">
             <h2>Approved Events</h2>
             <div class="table-responsive">
                 <table class="table table-bordered">
-                    <thead>
+                    <thead class="text-centered">
                         <tr>
                             <th>#</th>
                             <th>Event Name</th>
@@ -69,7 +73,7 @@ $approvedEvents = $stmtApproved->fetchAll(PDO::FETCH_ASSOC);
                                     <td><?php echo htmlspecialchars($event['event_type']); ?></td>
                                     <td><?php echo htmlspecialchars($event['target_audience']); ?></td>
                                     <td><?php echo htmlspecialchars($event['capacity']); ?></td>
-                                    <td class="d-flex gap-3">
+                                    <td>
                                         <a href="postpone-event.php?event_id=<?php echo $event['event_id']; ?>" class="btn btn-warning btn-sm" onclick="return confirm('Are you sure you want to delete this event?');">Postpone</a>
                                     </td>
                                 </tr>
@@ -89,7 +93,18 @@ $approvedEvents = $stmtApproved->fetchAll(PDO::FETCH_ASSOC);
             </div>
         </div>
     </main>
-
     <script src="../BukSU-Events/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../BukSU-Events/jquery3.7.1.js"></script>
+    <!-- Searching events -->
+    <script>
+        $(document).ready(function () {
+            $('#searchInput').on('keyup', function () {
+                var value = $(this).val().toLowerCase();
+                $('.approved-events tbody tr').filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+                });
+            });
+        });
+    </script>
 </body>
 </html>

@@ -11,7 +11,7 @@ if (!isset($_SESSION['admin_id'])) {
 
 // Fetch approved events with user details
 $stmtApproved = $pdo->prepare("
-    SELECT e.*, u.firstname, u.lastname, u.contact_no, u.role, u.email 
+    SELECT e.*, u.firstname, u.lastname, u.contact_no, u.email 
     FROM events e 
     JOIN users u ON e.user_id = u.user_id 
     WHERE e.status = 'approved' 
@@ -22,7 +22,7 @@ $approvedEvents = $stmtApproved->fetchAll(PDO::FETCH_ASSOC);
 
 // Fetch requested events (pending approval) with user details
 $stmtRequested = $pdo->prepare("
-    SELECT e.*, u.firstname, u.lastname, u.contact_no, u.role, u.email 
+    SELECT e.*, u.firstname, u.lastname, u.contact_no, u.email 
     FROM events e 
     JOIN users u ON e.user_id = u.user_id 
     WHERE e.status = 'pending' 
@@ -50,16 +50,18 @@ $requestedEvents = $stmtRequested->fetchAll(PDO::FETCH_ASSOC);
             <figcaption>Welcome Admin!</figcaption>
         </figure>
         <nav class="nav flex-column">
+            <div class="mb-3">
+                <input type="text" id="searchInput" class="form-control" placeholder="Search events...">
+            </div>
             <a href="dashboard.php" class="nav-link active"><i class="fas fa-home"></i> Dashboard</a>
             <a href="events.php" class="nav-link"><i class="fas fa-calendar-alt"></i> Events</a>
+            <a href="attendees.php" class="nav-link"><i class="fas fa-users"></i> Attendees</a>
             <a  href="land-page.php" class="nav-link"><i class="fas fa-sign-out"></i>Sign out</a>
         </nav>
     </aside>
 
     <!-- Main Content -->
     <main class="main-content">
-        
-
         <!-- Requested Events Table -->
         <div class="request-table container mt-4">
             <h2>Requested Events</h2>
@@ -71,7 +73,6 @@ $requestedEvents = $stmtRequested->fetchAll(PDO::FETCH_ASSOC);
                             <th>Firstname</th>
                             <th>Lastname</th>
                             <th>Contact No</th>
-                            <th>Role</th>
                             <th>Email</th>
                             <th>Event Name</th>
                             <th>Venue</th>
@@ -90,7 +91,6 @@ $requestedEvents = $stmtRequested->fetchAll(PDO::FETCH_ASSOC);
                                     <td><?php echo htmlspecialchars($event['firstname']); ?></td>
                                     <td><?php echo htmlspecialchars($event['lastname']); ?></td>
                                     <td><?php echo htmlspecialchars($event['contact_no']); ?></td>
-                                    <td><?php echo htmlspecialchars($event['role']); ?></td>
                                     <td><?php echo htmlspecialchars($event['email']); ?></td>
                                     <td><?php echo htmlspecialchars($event['event_name']); ?></td>
                                     <td><?php echo htmlspecialchars($event['venue']); ?></td>
@@ -115,7 +115,18 @@ $requestedEvents = $stmtRequested->fetchAll(PDO::FETCH_ASSOC);
             </div>
         </div>
     </main>
-
     <script src="../BukSU-Events/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../BukSU-Events/jquery3.7.1.js"></script>
+    <!-- Searching events -->
+    <script>
+        $(document).ready(function () {
+            $('#searchInput').on('keyup', function () {
+                var value = $(this).val().toLowerCase();
+                $('.request-table tbody tr').filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+                });
+            });
+        });
+    </script>
 </body>
 </html>

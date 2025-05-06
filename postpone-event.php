@@ -17,6 +17,8 @@ if (isset($_GET['event_id'])) {
     $stmt = $pdo->prepare("DELETE FROM events WHERE event_id = ?");
     if ($stmt->execute([$event_id])) {
         $_SESSION['success'] = "Event deleted successfully!";
+        // Delete the selected in the mysql
+        $stmt = $pdo->prepare("ALTER TABLE events DROP ROW event_id = ?");
     } else {
         $_SESSION['error'] = "Failed to delete the event.";
     }
