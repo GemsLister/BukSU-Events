@@ -20,7 +20,7 @@ session_start();
     <!-- main content -->
     <main class="container-fluid d-flex h-100">
         <!-- sign-in form -->
-        <form name="sign-in-form" action="sign-in-validate.php" method="POST" class="d-flex login-form">
+        <form name="sign-in-form" action="faculty-dashboard-validate.php" method="POST" class="d-flex login-form">
             <!-- sign-in title (large size) -->
             <div class="container-fluid sign-in-large d-none d-lg-flex d-xl-flex d-xxl-flex">
                 <div class="form-wordlines">

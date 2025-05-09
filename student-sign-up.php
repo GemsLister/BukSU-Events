@@ -61,24 +61,27 @@ session_start();
                  <div class="input-group">
                     <input type="tel" class="form-control" placeholder="Contact number" name="contact_no" aria-label="Contact number" aria-describedby="contact-addon1" required>
                 </div>
-                <!-- for roles -->
-                <div class="roles d-flex gap-4">
-                    <div class="form-check">
-                        <input class="form-check-input w-25" type="radio" value="student" id="student_role" name="roles">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            Student
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input w-25" type="radio" value="faculty" id="faculty_role" name="roles">
-                        <label class="form-check-label" for="flexCheckChecked">
-                            Faculty
-                        </label>
-                    </div>
-                </div>
                 <!-- for email-address -->
                 <div class="input-group">
-                    <input type="email" class="form-control" placeholder="Email address" name="email" aria-label="Email address" aria-describedby="email-addon1" required>
+                    <input type="email" class="form-control" placeholder="Institutional Email" name="email" aria-label="Email address" aria-describedby="email-addon1" required>
+                </div>
+                <!-- for section -->
+                <div class="input-group">
+                    <input type="email" class="form-control" placeholder="Section" name="section" aria-label="Email address" aria-describedby="email-addon1" required>
+                </div>
+                <!-- for college -->
+                <div class="input-group">
+                <div class="input-group">
+                    <select class="form-select" id="college" name="college" required>
+                        <option value="All Faculty and Students">College of Arts and Sciences</option>
+                        <option value="Faculty Only">College of Business</option>
+                        <option value="Specific Group">College of Education</option>
+                        <option value="Specific Group">College of Law</option>
+                        <option value="Students Only">College of Nursing</option>
+                        <option value="Specific Group">College of Public Administration</option>
+                        <option value="Specific Group">College of Technology</option>
+                    </select>
+                </div>
                 </div>
                 <!-- for password -->
                 <div class="input-group">

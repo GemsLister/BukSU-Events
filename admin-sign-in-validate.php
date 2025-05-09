@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['admin_id'] = $admin['admin_id'];
         $_SESSION['admin_name'] = $admin['name'];
         $_SESSION['success'] = "Sign in successful!";
-        header("Location: ../BukSU-Events/dashboard.php");
+        header("Location: ../BukSU-Events/admin-dashboard.php");
         exit();
 
     } catch (PDOException $e) {

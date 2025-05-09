@@ -18,7 +18,7 @@ $approvedEvents = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <title>BukSU Events - Landing Page</title>
     <link rel="stylesheet" href="../BukSU-Events/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../BukSU-Events/fontawesome-free-6.7.2-web/css/all.min.css">
-    <link rel="stylesheet" href="../BukSU-Events/css-style/new-land-page.css">
+    <link rel="stylesheet" href="../BukSU-Events/css-style/land-page.css">
 </head>
 <body>
     <!-- Header Section -->
@@ -35,13 +35,11 @@ $approvedEvents = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <nav class="d-none d-lg-flex">
                 <ul class="nav">
                     <li class="nav-item"><a href="#" class="nav-link text-white">Home</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link text-white">Events</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link text-white">Colleges</a></li>
+                    <li class="nav-item"><a href="#upcoming-events" class="nav-link text-white">Events</a></li>
                     <li class="nav-item"><a href="#" class="nav-link text-white">About Us</a></li>
                     <div class="sign-in-buttons d-flex align-items-center gap-3">
-                        <a href="sign-in.php" class="btn btn-outline-light d-none d-lg-flex">Sign-in</a>
-                        <a href="admin-sign-in.php" class="btn btn-outline-light d-none d-lg-flex">Admin Sign-in</a>
-                    </div>
+                    <a href="faculty-sign-in.php" class="btn btn-outline-light d-none d-lg-flex">Faculty Dashboard</a>
+                    <a href="admin-sign-in.php" class="btn btn-outline-light d-none d-lg-flex">Admin Sign-in</a>
                 </ul>
             </nav>
         </div>
@@ -50,10 +48,8 @@ $approvedEvents = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <div class="mobile-menu bg-primary text-white d-none" id="mobile-menu">
             <ul class="nav flex-column text-center">
                 <li class="nav-item"><a href="#" class="nav-link text-white">Home</a></li>
-                <li class="nav-item"><a href="#" class="nav-link text-white">Events</a></li>
-                <li class="nav-item"><a href="#" class="nav-link text-white">Colleges</a></li>
+                <li class="nav-item"><a href="#upcoming-events" class="nav-link text-white">Events</a></li>
                 <li class="nav-item"><a href="#" class="nav-link text-white">About Us</a></li>
-                <li class="nav-item"><a href="user-or-admin.php" class="btn btn-light mt-2">Sign-in</a></li>
             </ul>
         </div>
     </header>
@@ -83,7 +79,8 @@ $approvedEvents = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <div class="tagline text-center text-lg-start">
                     <h1 class="display-4">Welcome to BukSU Events</h1>
                     <p class="lead">Connect, Enjoy, and Innovate in Exciting Events at BukSU!</p>
-                    <a href="#upcoming-events" class="explore-events btn btn-primary btn-lg">Explore Events</a>
+                    <a href="sign-in.php" class="explore-events btn btn-primary btn-lg">Book a Demo (Faculty)</a>
+                    <a href="sign-up.php" class="explore-events btn btn-primary btn-lg">Sign up</a>
                 </div>
             </div>
         </section>
@@ -91,12 +88,12 @@ $approvedEvents = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <!-- Upcoming Events Section -->
         <section id="upcoming-events" class="upcoming-events py-5">
             <div class="upcoming-events-container container">
-                <h2 class="text-center mb-4">Upcoming Events</h2>
+                <h2 class="text-center mb-4">Events</h2>
                 <div class="row">
                     <?php if (count($approvedEvents) > 0): ?>
                         <?php foreach ($approvedEvents as $event): ?>
                             <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-                                <div class="card h-100">
+                                <a class="card h-100" href="attendance-form.php?event_id=<?php echo $event['event_id']; ?>">
                                     <div class="card-body">
                                         <h5 class="card-title"><?php echo htmlspecialchars($event['event_name']); ?></h5>
                                         <p class="card-text">
@@ -107,7 +104,7 @@ $approvedEvents = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                             <strong>Description:</strong> <?php echo htmlspecialchars($event['description']); ?>
                                         </p>
                                     </div>
-                                </div>
+                                </a>
                             </div>
                         <?php endforeach; ?>
                     <?php else: ?>

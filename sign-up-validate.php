@@ -6,13 +6,14 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $first_name = $_POST['firstname'];
     $last_name = $_POST['lastname'];
     $contact_no = $_POST['contact_no'];
+    $roles = $_POST['roles'];
     $email = $_POST['email'];
     $password = $_POST['password'];
     $confirm_password = $_POST['confirm_password'];
 
     if($password !== $confirm_password){
         $_SESSION['error'] = "Passwords do not match.";
-        header("Location: sign-up.php");
+        header("Location: land-page.php");
         exit();
     }
 
@@ -26,10 +27,10 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     }
     
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-    $stmt = $pdo -> prepare("INSERT INTO users (firstname, lastname, contact_no, email, password) VALUES (?, ?,?, ?, ?)");
+    $stmt = $pdo -> prepare("INSERT INTO users (firstname, lastname, contact_no, roles, email, password) VALUES (?, ?, ?,?, ?, ?)");
     
 
-    if($stmt -> execute([$first_name, $last_name, $contact_no, $email, $hashed_password])){
+    if($stmt -> execute([$first_name, $last_name, $contact_no, $roles, $email, $hashed_password])){
         $_SESSION['success'] = "Sign up successful!";
         header("Location: sign-in.php");
         exit();    

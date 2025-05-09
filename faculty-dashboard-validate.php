@@ -6,13 +6,6 @@
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-
-        // Prepare and execute the SQL statement to check for student credentials
-        $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ? AND roles = 'student'");
-        $stmt->execute([$email]);
-        $student_user = $stmt->fetch(PDO::FETCH_ASSOC);
-        
-
         // Prepare and execute the SQL statement to check for faculty credentials
         $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ? AND roles = 'faculty'");
         $stmt->execute([$email]);
@@ -22,17 +15,11 @@
             $_SESSION['user_id'] = $faculty_user['user_id']; // Use the correct column name for user ID
             $_SESSION['roles'] = $faculty_user['roles']; // Store the role in the session
             $_SESSION['success'] = "Faculty sign in successful!";
-            header("Location: ../BukSU-Events/user-booking.php"); // Redirect to user booking page
-            exit();
-        } elseif ($student_user && password_verify($password, $student_user['password'])) {
-            $_SESSION['user_id'] = $student_user['user_id']; // Use the correct column name for user ID
-            $_SESSION['roles'] = $student_user['roles']; // Store the role in the session
-            $_SESSION['success'] = "Faculty sign in successful!";
-            header("Location: ../BukSU-Events/land-page.php"); // Redirect to user booking page
+            header("Location: ../BukSU-Events/faculty-dashboard.php"); // Redirect to faculty dashboard
             exit();
         } else {
             $_SESSION['error'] = "Invalid email or password or you are not a faculty member.";
-            header("Location: ../BukSU-Events/sign-in.php");
+            header("Location: ../BukSU-Events/faculty-sign-in.php");
             exit();
         }
     }

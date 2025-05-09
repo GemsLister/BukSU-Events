@@ -21,19 +21,19 @@ session_start();
     <main class="container-fluid d-flex h-100">
         <!-- booking form -->
         <form name="booking-form" action="submit-event-request.php" method="POST" class="d-flex login-form">
-            <div class="container-fluid booking-large d-none d-lg-flex d-xl-flex d-xxl-flex">
+            <div class="container-fluid booking-large d-flex">
                 <div class="form-wordlines">
                     <h1>Request an Event</h1>
                     <p>Plan your event effortlessly—submit your request now!</p>
                     <!-- Success message -->
                     <?php if (isset($_SESSION['success'])): ?>
-                        <h5 class="text-success">
+                        <h5 class="success-msg text-success">
                             <?php echo $_SESSION['success']; unset($_SESSION['success']); ?>
                         </h5>
                     <?php endif; ?>
                     <!-- Error message -->
                     <?php if (isset($_SESSION['error'])): ?>
-                        <h5 class="text-danger">
+                        <h5 class="error-msg text-danger">
                             <?php echo $_SESSION['error']; unset($_SESSION['error']); ?>
                         </h5>
                     <?php endif; ?>
@@ -67,7 +67,6 @@ session_start();
                         <option value="All Faculty and Students">All Faculty and Students</option>
                         <option value="Faculty Only">Faculty Only</option>
                         <option value="Students Only">Students Only</option>
-                        <option value="Specific Group">Specific Group</option>
                     </select>
                 </div>
                 <!-- event venue -->

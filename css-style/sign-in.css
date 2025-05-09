@@ -161,6 +161,12 @@ main form .sign-in-large a{
     font-size: clamp(10px, 5vw, 16px);
 }
 
+.booking-large h5.success-message,
+.booking-small h5.success-message{
+    border: 1px solid white;
+    color: white;
+}
+
 main form .inputs{
     flex-direction: column;
     justify-content: center;

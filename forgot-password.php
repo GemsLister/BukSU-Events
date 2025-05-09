@@ -11,9 +11,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
     $stmt->execute([$email]); 
-    $user = $stmt->fetch(PDO::FETCH_ASSOC); // storing the result on a variable to be used later
+    $faculty_user = $stmt->fetch(PDO::FETCH_ASSOC); // storing the result on a variable to be used later
 
-    if($user){
+    if($faculty_user){
         $reset_code = rand(100000, 999999); // generate a random 6-digit code
 
         $update = $pdo->prepare("UPDATE users SET reset_code = ? WHERE email = ?");

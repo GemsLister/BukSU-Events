@@ -23,5 +23,5 @@ if (isset($_GET['event_id'])) {
 }
 
 // Redirect back to the dashboard
-header("Location: dashboard.php");
+header("Location: admin-dashboard.php");
 exit();

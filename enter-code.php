@@ -14,10 +14,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $stmt = $pdo->prepare("SELECT reset_code FROM users WHERE email = ?");
     $stmt->execute([$email]); // call the database to check if the email address exists
-    $user = $stmt->fetch(PDO::FETCH_ASSOC); // storing the result on a variable to be used later
+    $users = $stmt->fetch(PDO::FETCH_ASSOC); // storing the result on a variable to be used later
 
-    if($user){
-        if($entered_code == $user['reset_code']){
+    if($users){
+        if($entered_code == $users['reset_code']){
             $_SESSION['reset_email'] = $email; // store the email in session for later use
             $_SESSION['reset_code_verified'] = true; // set a flag to indicate the code is verified
             header("Location: ../BukSU-Events/reset-password.php"); 
