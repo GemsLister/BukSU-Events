@@ -22,7 +22,7 @@ if (isset($_GET['event_id']) && is_numeric($_GET['event_id'])) {
 
     // Fetch attendees for the selected event with user details AND attendance status
     $stmtAttendees = $pdo->prepare("
-        SELECT a.*, u.firstname, u.lastname, u.email, u.contact_no, a.attendance_status
+        SELECT a.*, u.firstname, u.lastname, u.email, u.contact_no, a.attendance_status, u.roles
         FROM attendees a
         JOIN users u ON a.user_id = u.user_id
         WHERE a.event_id = ?
@@ -175,8 +175,9 @@ if (isset($_GET['event_id']) && is_numeric($_GET['event_id'])) {
                         </tbody>
                     </table>
                 </div>
+                <a href="print-attendance.php?event_id=<?php echo $_GET['event_id']; ?>" class="btn btn-primary" target="_blank">Print Attendance</a>
             <?php elseif (!empty($events)): ?>
-                <p>Select an event from the dropdown to view its attendees.</p>
+                <p>Select an event from the dropdown to view its attendees and the print option.</p>
             <?php else: ?>
                 <p>No approved events available to show attendees.</p>
             <?php endif; ?>
