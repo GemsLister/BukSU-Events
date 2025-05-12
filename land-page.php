@@ -79,7 +79,7 @@ $approvedEvents = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <div class="tagline text-center text-lg-start">
                     <h1 class="display-4">Welcome to BukSU Events</h1>
                     <p class="lead">Connect, Enjoy, and Innovate in Exciting Events at BukSU!</p>
-                    <a href="sign-in.php" class="explore-events btn btn-primary btn-lg">Book a Demo (Faculty)</a>
+                    <a href="sign-in.php" class="explore-events btn btn-primary btn-lg">Book an Event (Faculty)</a>
                     <a href="sign-up.php" class="explore-events btn btn-primary btn-lg">Sign up</a>
                 </div>
             </div>
