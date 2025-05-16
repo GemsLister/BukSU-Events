@@ -1,62 +1,75 @@
 <?php
-// filepath: e:\xampp\htdocs\BukSU-Events\submit-event-request.php
-
-// Include the database connection
-require_once 'db.php';
-
-// Start the session
 session_start();
+include 'db.php';
 
-// Check if the user is logged in
-if (!isset($_SESSION['user_id']) || empty($_SESSION['user_id'])) {
-    die("Error: User is not logged in. Please log in to submit an event request.");
-}
-
-// Check if the form is submitted
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Retrieve form data
-    $user_id = $_SESSION['user_id']; // Ensure this is set during login
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $event_name = $_POST['event_name'];
-    $event_date_time = str_replace('T', ' ', $_POST['event_date_time']); // Convert 'YYYY-MM-DDTHH:MM' to 'YYYY-MM-DD HH:MM:SS'
+    $event_date_time = $_POST['event_date_time'];
     $event_type = $_POST['event_type'];
     $target_audience = $_POST['target_audience'];
     $event_venue = $_POST['event_venue'];
-    $event_mode = $_POST['event_mode'];
+    $mode = $_POST['mode']; // Accessing the value from the form using the correct 'name' attribute
     $capacity = $_POST['capacity'];
     $description = $_POST['description'];
 
-    // Insert the event request into the database
-    $sql = "INSERT INTO events (user_id, event_name, event_type, target_audience, venue, mode, capacity, description, event_date_time)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    $stmt = $conn->prepare($sql);
+    // Check if the user is logged in and their ID is in the session
+    if (isset($_SESSION['user_id']) && is_numeric($_SESSION['user_id'])) {
+        $user_id = $_SESSION['user_id'];
 
-    // Check if the statement was prepared successfully
-    if (!$stmt) {
-        die("SQL error: " . $conn->error);
-    }
+        $image_path = null; // Initialize image path
 
-    // Bind parameters to the SQL query
-    $stmt->bind_param('issssssss', $user_id, $event_name, $event_type, $target_audience, $event_venue, $event_mode, $capacity, $description, $event_date_time);
+        // Handle image upload if a file was selected
+        if (isset($_FILES['event_image'])) {
+            if ($_FILES['event_image']['error'] == 0) {
+                $allowed_types = ['image/jpeg', 'image/png', 'image/gif'];
+                if (in_array($_FILES['event_image']['type'], $allowed_types)) {
+                    $upload_dir = 'uploads/'; // Ensure this path is correct
+                    // Sanitize filename for security
+                    $filename = uniqid() . '_' . preg_replace("/[^a-zA-Z0-9.]/", "", $_FILES['event_image']['name']);
+                    $destination = $upload_dir . $filename;
 
-    // Execute the query
-    if ($stmt->execute()) {
-        // Redirect to the form with a success message
-        $_SESSION['success'] = "Event request submitted successfully!";
-        header('Location: user-booking.php');
+                    if (move_uploaded_file($_FILES['event_image']['tmp_name'], $destination)) {
+                        $image_path = $destination;
+                    } else {
+                        $_SESSION['error'] = 'Error moving uploaded file.';
+                        header('Location: php-forms/user-booking.php');
+                        exit();
+                    }
+                } else {
+                    $_SESSION['error'] = 'Invalid image format. Only JPG, JPEG, PNG, and GIF are allowed.';
+                    header('Location: php-forms/user-booking.php');
+                    exit();
+                }
+            } elseif ($_FILES['event_image']['error'] != 4) { // Error other than no file uploaded
+                $_SESSION['error'] = 'Error uploading image. Error code: ' . $_FILES['event_image']['error'];
+                header('Location: php-forms/user-booking.php');
+                exit();
+            }
+            // If $_FILES['event_image']['error'] == 4, it means no file was uploaded, so $image_path remains null, which is fine.
+        }
+
+        try {
+            $stmt = $pdo->prepare("INSERT INTO events (user_id, event_name, event_date_time, event_type, target_audience, venue, mode, capacity, description, image_path, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'pending')");
+            $stmt->execute([$user_id, $event_name, $event_date_time, $event_type, $target_audience, $event_venue, $mode, $capacity, $description, $image_path]);
+
+            $_SESSION['success'] = 'Event request submitted successfully!';
+            header('Location: php-forms/user-booking.php');
+            exit();
+
+        } catch (PDOException $e) {
+            $_SESSION['error'] = 'Error submitting event request: ' . $e->getMessage();
+            header('Location: php-forms/user-booking.php');
+            exit();
+        }
+
     } else {
-        // Redirect back with an error message
-        $_SESSION['error'] = "Failed to submit the event request. SQL Error: " . $stmt->error;
-        header('Location: user-booking.php');
+        $_SESSION['error'] = 'You must be logged in to submit an event request.';
+        header('Location: ../sign-in.php'); // Redirect to login page
+        exit();
     }
 
-    $notify = $pdo -> prepare("SELECT * FROM events WHERE event_date_time = ?");
-    $notify -> execute([$event_date_time]);
-
-    // Close the statement and connection
-    $stmt->close();
-    $conn->close();
 } else {
-    // Redirect back if the request method is not POST
-    header('Location: user-booking.php');
+    header('Location: php-forms/user-booking.php');
+    exit();
 }
 ?>

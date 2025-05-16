@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if(!isset($_SESSION['email'])){
         $_SESSION['error'] = "No email session found";
-        header("Location: ../BukSU-Events/forgot-password.php");
+        header("Location: php-forms/forgot-password.php");
         exit();
     }
 
@@ -20,17 +20,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if($entered_code == $users['reset_code']){
             $_SESSION['reset_email'] = $email; // store the email in session for later use
             $_SESSION['reset_code_verified'] = true; // set a flag to indicate the code is verified
-            header("Location: ../BukSU-Events/reset-password.php"); 
+            header("Location: php-forms/reset-password.php"); 
         }
         else{
             $_SESSION['error'] = "Invalid code. Please try again.";
-            header("Location: ../BukSU-Events/enter-code.php");
+            header("Location: php-forms/enter-code.php");
             exit();
         }
     }
     else{
         $_SESSION['error'] = "Email address not found.";
-        header("Location: ../BukSU-Events/forgot-password.php");
+        header("Location: php-forms/forgot-password.php");
         exit();
     }
 }

@@ -22,7 +22,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
     if($stmt -> rowCount() > 0){
         $_SESSION['error'] = "Email already exists.";
-        header("Location: sign-up.php");
+        header("Location: php-forms/sign-up.php");
         exit();
     }
     
@@ -32,7 +32,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
     if($stmt -> execute([$first_name, $last_name, $contact_no, $roles, $email, $hashed_password])){
         $_SESSION['success'] = "Sign up successful!";
-        header("Location: sign-in.php");
+        header("Location: php-forms/sign-in.php");
         exit();    
     }
     else{

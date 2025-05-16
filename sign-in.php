@@ -18,7 +18,7 @@ $siteKey = $_ENV['RECAPTCHA_SITE_KEY']; // Access the reCAPTCHA site key
     <title>Sign in</title>
     <link rel="stylesheet" href="../BukSU-Events/bootstrap/css/bootstrap.min.css"> 
     <link rel="stylesheet" href="../BukSU-Events/fontawesome-free-6.7.2-web/css/all.min.css">
-    <link rel="stylesheet" href="../BukSU-Events/css-style/sign-in.css">
+    <link rel="stylesheet" href="css-style/sign-in.css">
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>

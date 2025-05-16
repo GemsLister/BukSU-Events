@@ -25,7 +25,7 @@ if(isset($_GET['code'])){
             $_SESSION['user_image'] = $userInfo->picture;
 
             $_SESSION['success'] = 'Login with Google successful!';
-            header('Location: /BukSU-Events/land-page.php');
+            header('Location: /BukSU-Events/user-booking.php');
             exit();
 
         } else {

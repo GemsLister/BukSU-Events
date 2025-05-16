@@ -1,0 +1,188 @@
+/* regular roboto font */
+@font-face {
+    font-family: 'Roboto';
+    src: url(/BukSU-Events/roboto_static/Roboto-Regular.ttf);
+}
+
+/* bold roboto font */
+@font-face {
+    font-family: 'Roboto-Bold';
+    src: url(/BukSU-Events/roboto_static/Roboto-Bold.ttf);
+}
+
+:root{
+    --linear-pink: rgba(237, 70, 145, 0.623);
+    --dark-pink: rgb(235, 50, 133);
+    --darker-pink: rgb(200, 40, 110);
+    --linear-purple: rgba(85, 34, 204, 0.733);
+    --darker-purple: rgb(85, 34, 204);
+    --light-royal-blue: #4943F2;
+    --orange-peel: #E57930;
+    --dark-blue: #242565;
+    --darker-blue: #13133b;
+    --grayish-white: #dfdfdf83;
+    --box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    --gray-font: #b9b6b6;
+    --cyan-blue-azure: #3D85C0;
+}
+
+.title{
+    font-family: 'Roboto-Bold';
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title h1{
+    color: var(--dark-blue);
+}
+
+.title p,
+.title a,
+.forgot-password{
+    color: var(--darker-blue);
+    text-decoration: none;
+}
+
+.title p,
+.title a{
+    font-family: 'Roboto';
+}
+
+footer{
+    display: flex;
+    justify-content: center;
+    max-height: 70px;
+    padding: 1rem;
+    color: var(--dark-blue);
+}
+
+.inputs{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 13px;
+    width: clamp(17rem, 70dvw, 19rem);
+}
+
+#submitBtn{
+    border: 0;
+    background-color: var(--dark-pink);
+}
+
+.google-btn{
+    border: 1px solid var(--dark-pink);
+    color: var(--dark-pink);
+}
+
+#submitBtn:hover{
+    background-color: var(--darker-pink);
+}
+
+.google-btn:hover{
+    border: 1px solid var(--dark-pink);
+    background-color: var(--dark-pink);
+}
+
+@media (max-width: 992px){
+    main{
+        background-color: white;
+        height: 100dvh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .title h1{
+        font-size: 2.5rem;
+    }
+
+    .title p,
+    .title a,
+    .forgot-password{
+        font-size: 0.85rem;
+    }
+
+    .recaptcha-container{
+        width: 320px;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .g-recaptcha {
+       transform: 700px;
+       transform-origin: 0 0;
+    }
+
+    
+
+    footer p{
+        font-size: 0.8rem;
+    }
+
+}
+
+@media (width > 992px){
+    body{
+        display: grid;
+        grid-template-columns: clamp(10rem, 45dvw, 50rem) auto;
+    }
+
+    main{
+        background-image: linear-gradient(to right, var(--linear-pink), var(--linear-purple)),
+        url(/BukSU-Events/images/buksu-image.jpg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 100dvh;
+        display: flex;
+        justify-content: center;
+        align-items: end;
+    }
+
+    .inputs{
+        width: clamp(25rem, 25dvw, 45rem);
+    }
+
+    .btn,
+    input.form-control{
+        padding: clamp(0.2rem, 1dvw, 0.5rem);
+    }
+} 
+
+/* Aside form */
+aside{
+    grid-column: 2;
+    background-color: white;
+}
+
+aside form{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100dvh;
+}
+
+main figure{
+    font-family: 'Roboto-Bold';
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+    height: calc(100dvh - 40%);
+}
+
+main figure img.form-logo{
+    height: clamp(4rem, 14dvw, 14rem);
+}
+
+main figcaption p{
+    font-size: clamp(1.2rem, 1.5dvw, 2rem);
+}
+
+main .copyrights p{
+    font-family: 'Roboto';
+    color: white;
+    font-size: clamp(1rem, 1dvw, 1.5rem);
+}

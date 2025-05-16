@@ -71,12 +71,7 @@ session_start();
                 </div>
                 <!-- event venue -->
                 <div class="input-group">
-                    <select class="form-select" id="event_venue" name="event_venue" required>
-                        <option value="Auditorium">Auditorium</option>
-                        <option value="Gymnasium">Gymnasium</option>
-                        <option value="Museum">Museum</option>
-                        <option value="Theatre">Theatre</option>
-                    </select>
+                    <input class="form-control" id="event_venue" name="event_venue" placeholder="Enter venue" required>
                 </div>
                 <!-- event mode -->
                 <div class="input-group">
