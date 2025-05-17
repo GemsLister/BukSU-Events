@@ -41,8 +41,8 @@ $approvedEvents = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <li class="nav-item"><a href="#upcoming-events" class="nav-link text-white">Events</a></li>
                     <li class="nav-item"><a href="#" class="nav-link text-white">About Us</a></li>
                     <div class="sign-in-buttons d-flex align-items-center gap-3">
-                    <a href="faculty-sign-in.php" class="btn btn-outline-light d-none d-lg-flex">Faculty Dashboard</a>
-                    <a href="admin-sign-in.php" class="btn btn-outline-light d-none d-lg-flex">Admin Sign-in</a>
+                    <a href="../BukSU-Events/php-forms/dashboard-sign-in.php" class="btn btn-outline-light d-none d-lg-flex">Faculty Dashboard</a>
+                    <a href="../BukSU-Events/php-forms/admin-sign-in.php" class="btn btn-outline-light d-none d-lg-flex">Admin Sign-in</a>
                 </ul>
             </nav>
         </div>
@@ -91,11 +91,11 @@ $approvedEvents = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <?php if (count($approvedEvents) > 0): ?>
                         <?php foreach ($approvedEvents as $event): ?>
                             <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-                                <a class="card h-100" href="attendance-form.php?event_id=<?php echo $event['event_id']; ?>">
+                                <a class="card h-100" href="php-forms/attendance-form.php?event_id=<?php echo $event['event_id']; ?>">
                                     <?php if (!empty($event['image_path'])): ?>
                                         <img src="<?php echo htmlspecialchars($event['image_path']); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($event['event_name']); ?>">
                                     <?php else: ?>
-                                        <img src="../BukSU-Events/images/default-event.png" class="card-img-top" alt="Default Event">
+                                        <img src="../BukSU-Events/images/blank_img.jpg" class="card-img-top" alt="Default Event">
                                     <?php endif; ?>
                                     <div class="card-body">
                                         <h5 class="card-title"><?php echo htmlspecialchars($event['event_name']); ?></h5>
@@ -104,7 +104,7 @@ $approvedEvents = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                             <strong>Venue:</strong> <?php echo htmlspecialchars($event['venue']); ?><br>
                                             <strong>Type:</strong> <?php echo htmlspecialchars($event['event_type']); ?><br>
                                             <strong>Audience:</strong> <?php echo htmlspecialchars($event['target_audience']); ?><br>
-                                            <strong>Description:</strong> <?php echo htmlspecialchars(substr($event['description'], 0, 50)) . '...'; ?>
+                                            <strong>Description:</strong> <?php echo htmlspecialchars(substr($event['description'], 0, 15)) . '...'; ?>
                                         </p>
                                     </div>
                                 </a>

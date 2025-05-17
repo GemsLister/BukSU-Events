@@ -15,9 +15,9 @@ session_start();
 </head>
 <body>
     <main>
-        <form action="../sign-in-validate.php" method="POST" class="d-lg-none">
+        <form action="../faculty-dashboard-validate.php" method="POST" class="d-lg-none">
             <div class="title">
-                <h1>Sign in</h1>
+                <h1>Dashboard Sign-in</h1>
                 <p>Don't have an account? <strong><a href="sign-up.php">Sign up</a></strong></p>
                 <?php if(isset($_SESSION['success'])): ?>
                     <h5 class="success-message">
@@ -56,9 +56,9 @@ session_start();
     </main>
 
     <aside>
-        <form action="../sign-in-validate.php" method="POST" class="d-none d-lg-flex">
+        <form action="../faculty-dashboard-validate.php" method="POST" class="d-none d-lg-flex">
             <div class="title">
-                <h1>Sign in</h1>
+                <h1>Dashboard Sign-in</h1>
                 <p>Don't have an account? <strong><a href="sign-up.php">Sign up</a></strong></p>
                 <?php if(isset($_SESSION['success'])): ?>
                     <h5 class="success-message">
@@ -81,7 +81,7 @@ session_start();
                 <button type="submit" method="POST" id=submitBtn class="btn btn-primary w-100 mt-4 mb-2">Sign in</button>
                 <a href="../googleAuth/google-login.php" class="google-btn btn btn-outline-primary w-100">
                     <i class="fa-brands fa-google"></i>
-                    Continue with Google
+                    Connect with Google
                 </a>
                 <a class="forgot-password mt-4" href="../php-forms/forgot-password.php">Forgot password?</a>
             </div>

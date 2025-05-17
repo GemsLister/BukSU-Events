@@ -20,17 +20,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if($entered_code == $users['reset_code']){
             $_SESSION['reset_email'] = $email; // store the email in session for later use
             $_SESSION['reset_code_verified'] = true; // set a flag to indicate the code is verified
-            header("Location: reset-password.php"); 
+            header("Location: ../php-forms/reset-password.php"); 
         }
         else{
             $_SESSION['error'] = "Invalid code. Please try again.";
-            header("Location: enter-code.php");
+            header("Location: ../php-forms/enter-code.php");
             exit();
         }
     }
     else{
         $_SESSION['error'] = "Email address not found.";
-        header("Location: php-forms/forgot-password.php");
+        header("Location: ../php-forms/forgot-password.php");
         exit();
     }
 }
@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 <body>
     <main>
-        <form action="enter-code.php" method="POST" class="d-lg-none">
+        <form action="../php-forms/enter-code.php" method="POST" class="d-lg-none">
             <div class="title">
                 <h1>Enter code</h1>
                 <!-- message if email address already exists -->
@@ -77,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </main>
 
     <aside>
-        <form action="../sign-up-validate.php" method="POST" class="d-none d-lg-flex">
+        <form action="../php-forms/enter-code.php" method="POST" class="d-none d-lg-flex">
             <div class="title">
                 <h1>Enter code</h1>
                 <!-- message if email address already exists -->

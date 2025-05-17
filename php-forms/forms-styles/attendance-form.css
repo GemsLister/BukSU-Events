@@ -127,18 +127,21 @@ footer{
     body{
         display: grid;
         grid-template-columns: clamp(10rem, 45dvw, 50rem) auto;
+        grid-template-rows: 1fr;
     }
 
     main{
+        grid-column: 1;
         background-image: linear-gradient(to right, var(--linear-pink), var(--linear-purple)),
         url(/BukSU-Events/images/buksu-image.jpg);
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
-        height: 100dvh;
+        height: 1fr;
         display: flex;
+        flex-direction: column;
         justify-content: center;
-        align-items: end;
+        align-items: center;
     }
 
     .inputs{
@@ -166,15 +169,13 @@ aside form{
 
 main figure{
     font-family: 'Roboto-Bold';
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    justify-content: space-between;
     color: white;
-    height: calc(100dvh - 40%);
 }
 
 main figure img.form-logo{
-    height: clamp(4rem, 14dvw, 14rem);
+    height: clamp(4rem, 14dvw, 8rem);
 }
 
 main figcaption p{
@@ -192,4 +193,34 @@ main .copyrights p{
     background-color: white;
     height: 200px;
     width: 100px;
+}
+
+.sideposter{
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    width: 100%;
+}
+
+.card-title{
+    font-family: 'Roboto-Bold';
+    color: var(--dark-blue);
+    font-size: clamp(1.5rem, 2dvw, 2rem);
+}
+
+p.card-text{
+    color: var(--darker-blue);
+}
+
+.card-img-top{
+    border: 4px solid white;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+    object-fit: cover;
+    height: clamp(10rem, 20dvw, 30rem);
+}
+
+.card-body,
+.card-img-top{
+    width: clamp(10rem, 40dvw, 32rem);
 }

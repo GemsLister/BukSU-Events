@@ -13,17 +13,33 @@ if (!isset($_SESSION['admin_id'])) {
 if (isset($_GET['event_id'])) {
     $event_id = $_GET['event_id'];
 
-    // Delete the event from the database
-    $stmt = $pdo->prepare("DELETE FROM events WHERE event_id = ?");
-    if ($stmt->execute([$event_id])) {
-        $_SESSION['success'] = "Event deleted successfully!";
-        // Delete the selected in the mysql
-        $stmt = $pdo->prepare("ALTER TABLE events DROP ROW event_id = ?");
-    } else {
-        $_SESSION['error'] = "Failed to delete the event.";
+    try {
+        // Start a transaction to ensure atomicity
+        $pdo->beginTransaction();
+
+        // Delete related records from the attendees table
+        $stmt_delete_attendees = $pdo->prepare("DELETE FROM attendees WHERE event_id = ?");
+        $stmt_delete_attendees->execute([$event_id]);
+
+        // Delete the event from the events table
+        $stmt_delete_event = $pdo->prepare("DELETE FROM events WHERE event_id = ?");
+        if ($stmt_delete_event->execute([$event_id])) {
+            $_SESSION['success'] = "Event and associated attendees deleted successfully!";
+        } else {
+            $_SESSION['error'] = "Failed to delete the event.";
+            $pdo->rollBack(); // Rollback the transaction if event deletion fails
+        }
+
+        // Commit the transaction
+        $pdo->commit();
+
+    } catch (PDOException $e) {
+        $_SESSION['error'] = "Error deleting event: " . $e->getMessage();
+        $pdo->rollBack(); // Rollback on any error
     }
 }
 
 // Redirect back to the events page
-header("Location: events.php");
+header("Location: ../BukSU-Events/events.php");
 exit();
+?>

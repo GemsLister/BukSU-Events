@@ -2,12 +2,12 @@
 session_start(); 
 
 if (!isset($_SESSION['reset_email']) || !isset($_SESSION['reset_code_verified']) || !$_SESSION['reset_code_verified']) {
-    header("Location: php-forms/enter-code.php");
+    header("Location: ../php-forms/enter-code.php");
     exit();
 }
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
-    require 'db.php';
+    require '../db.php';
     $new_password = $_POST['new_password'];
     $confirm_password = $_POST['confirm_password'];
     
@@ -24,12 +24,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['success'] = "Password reset successfully.";
         
         // go back to sign-in page
-        header("Location: php-forms/sign-in.php");
+        header("Location: ../php-forms/sign-in.php");
         exit();
     }
     else{
         $_SESSION['error'] = "Passwords do not match.";
-        header("Location: php-forms/reset-password.php");
+        header("Location: ../php-forms/reset-password.php");
         exit();
     }
 }
@@ -47,7 +47,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 <body>
     <main>
-        <form action="../sign-up-validate.php" method="POST" class="d-lg-none">
+        <form action="../php-forms/reset-password.php" method="POST" class="d-lg-none">
             <div class="title">
                 <h1>Enter new password</h1>
                 <!-- message if email address already exists -->
@@ -79,7 +79,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     </main>
 
     <aside>
-        <form action="../sign-up-validate.php" method="POST" class="d-none d-lg-flex">
+        <form action="../php-forms/reset-password.php" method="POST" class="d-none d-lg-flex">
             <div class="title">
                 <h1>Enter new password</h1>
                 <!-- message if email address already exists -->

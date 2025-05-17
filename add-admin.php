@@ -5,7 +5,7 @@
 include 'db.php';
 
 // Admin details
-$admin_email = 'buksuevent123@event.com';
+$admin_email = 'buksuevent123@email.com';
 $admin_password_plain = 'buksueventsadmin';
 $admin_name = 'BukSU Events Admin';
 $admin_role = 'admin'; // Set the role to 'admin'

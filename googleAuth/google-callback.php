@@ -24,23 +24,23 @@ if(isset($_GET['code'])){
             $_SESSION['user_email'] = $userInfo->email;
             $_SESSION['user_image'] = $userInfo->picture;
 
-            $_SESSION['success'] = 'Login with Google successful!';
-            header('Location: /BukSU-Events/user-booking.php');
+            // $_SESSION['success'] = 'Login with Google successful!';
+            header('Location: ../php-forms/connect-with-google.php');
             exit();
 
         } else {
             $_SESSION['error'] = 'Google sign-in failed: ' . $token['error'];
-            header('Location: sign-in.php'); // Correct header format
+            header('Location: ../php-forms/sign-in.php'); // Correct header format
             exit();
         }
     } catch (\Google\Exception $e) {
         $_SESSION['error'] = 'Google sign-in error: ' . $e->getMessage();
-        header('Location: sign-in.php');
+        header('Location: ../php-forms/sign-in.php');
         exit();
     }
 } else {
     $_SESSION['error'] = 'Invalid Google sign-in request.';
-    header('Location: sign-in.php');
+    header('Location: ../php-forms/sign-in.php');
     exit();
 }
 ?>

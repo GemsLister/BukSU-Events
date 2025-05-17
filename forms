@@ -1,0 +1,22 @@
+<div class="event-img">
+                    <?php
+                    $imagePath = !empty($event['image_path']) ? '../' . htmlspecialchars($event['image_path']) : '../BukSU-Events/images/default-event.jpg';
+                    ?>
+                    <img src="<?php echo $imagePath; ?>" class="card-img-top" alt="<?php echo htmlspecialchars($event['event_name']); ?>">
+                </div>
+
+                <!-- Event Info Card -->
+        <div class="sideposter">
+            <div class="card mb-4 mx-auto">
+                <div class="card-body">
+                    <h5 class="card-title"><?php echo htmlspecialchars($event['event_name']); ?></h5>
+                    <p class="card-text">
+                        <strong>Date:</strong> <?php echo date('M d, Y', strtotime($event['event_date_time'])); ?><br>
+                        <strong>Venue:</strong> <?php echo htmlspecialchars($event['venue']); ?><br>
+                        <strong>Type:</strong> <?php echo htmlspecialchars($event['event_type']); ?><br>
+                        <strong>Audience:</strong> <?php echo htmlspecialchars($event['target_audience']); ?><br>
+                        <strong>Description:</strong> <?php echo htmlspecialchars(substr($event['description'], 0, 1000)); ?>
+                    </p>
+                </div>
+            </div>
+        </div>

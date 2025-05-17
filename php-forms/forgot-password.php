@@ -6,7 +6,7 @@ use PHPMailer\PHPMailer\Exception;
 
 require '../vendor/autoload.php'; // Load Composer's autoloader
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
-    require 'db.php'; 
+    require '../db.php'; 
     $email = $_POST['email'];
 
     $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
@@ -41,22 +41,22 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
             $mail->AltBody = "Your password reset code is: $reset_code"; // Plain text body for non-HTML email clients
             $mail->send(); // Send the email
             $_SESSION['success'] = "A reset code has been sent to your email address.";
-            header("Location: php-forms/enter-code.php");
+            header("Location: ../php-forms/enter-code.php");
             exit();
         }
         catch (Exception $e){
             $_SESSION['error'] = "Message could not be sent.";
-            header("Location: php-forms/forgot-password.php");
+            header("Location: ../php-forms/forgot-password.php");
             exit();   
         }
 
         $_SESSION['success'] = "A reset code has been sent to your email address.";
-        header("Location: php-forms/enter-code.php"); 
+        header("Location: ../php-forms/enter-code.php"); 
         exit();
     }
     else{
         $_SESSION['error'] = "Email address not found.";
-        header("Location: php-forms/forgot-password.php");
+        header("Location: ../php-forms/forgot-password.php");
         exit();
     }
 }
@@ -74,7 +74,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 <body>
     <main>
-        <form action="../forgot-password.php" method="POST" class="d-lg-none">
+        <form action="../php-forms/forgot-password.php" method="POST" class="d-lg-none">
             <div class="title">
                 <h1>Enter Email</h1>
                 <!-- message if email address already exists -->
@@ -102,7 +102,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     </main>
 
     <aside>
-        <form action="../forgot-password.php" method="POST" class="d-none d-lg-flex">
+        <form action="../php-forms/forgot-password.php" method="POST" class="d-none d-lg-flex">
             <div class="title">
                 <h1>Enter Email</h1>
                 <!-- message if email address already exists -->

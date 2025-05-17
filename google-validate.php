@@ -32,7 +32,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
     if($stmt -> execute([$first_name, $last_name, $contact_no, $roles, $email, $hashed_password])){
         $_SESSION['success'] = "Sign up successful!";
-        header("Location: ../BukSU-Events/faculty-dashboard.php");
+        header("Location: php-forms/sign-in.php");
         exit();    
     }
     else{
