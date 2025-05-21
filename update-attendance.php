@@ -4,9 +4,10 @@
 session_start();
 include 'db.php';
 
-// Check if the admin is logged in
+/// Check if the admin is logged in
 if (!isset($_SESSION['admin_id'])) {
-    die("Error: Admin is not logged in. Please log in.");
+    header("Location: php-forms/admin-sign-in.php");
+    exit();
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

@@ -11,6 +11,20 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $password = $_POST['password'];
     $confirm_password = $_POST['confirm_password'];
 
+    // Institutional email validation
+    $isValid = false;
+    if ($roles === 'student' && preg_match('/^[a-zA-Z0-9._%+-]+@student\.buksu\.edu\.ph$/', $email)) {
+        $isValid = true;
+    }
+    if ($roles === 'faculty' && preg_match('/^[a-zA-Z0-9._%+-]+@buksu\.edu\.ph$/', $email)) {
+        $isValid = true;
+    }
+    if (!$isValid) {
+        $_SESSION['error'] = "Only institutional emails are allowed. Students: *@student.buksu.edu.ph, Faculty: *@buksu.edu.ph";
+        header("Location: php-forms/sign-up.php?error=invalid_email");
+        exit();
+    }
+
     if($password !== $confirm_password){
         $_SESSION['error'] = "Passwords do not match.";
         header("Location: land-page.php");
@@ -40,4 +54,4 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         exit();
     }
  }
- ?>
+?>

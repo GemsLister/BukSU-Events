@@ -8,7 +8,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $event_type = $_POST['event_type'];
     $target_audience = $_POST['target_audience'];
     $event_venue = $_POST['event_venue'];
-    $mode = $_POST['mode']; // Accessing the value from the form using the correct 'name' attribute
     $capacity = $_POST['capacity'];
     $description = $_POST['description'];
 
@@ -49,8 +48,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
 
         try {
-            $stmt = $pdo->prepare("INSERT INTO events (user_id, event_name, event_date_time, event_type, target_audience, venue, mode, capacity, description, image_path, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'pending')");
-            $stmt->execute([$user_id, $event_name, $event_date_time, $event_type, $target_audience, $event_venue, $mode, $capacity, $description, $image_path]);
+            $stmt = $pdo->prepare("INSERT INTO events (user_id, event_name, event_date_time, event_type, target_audience, venue, capacity, description, image_path, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt->execute([$user_id, $event_name, $event_date_time, $event_type, $target_audience, $event_venue, $capacity, $description, $image_path, 'pending']);
 
             $_SESSION['success'] = 'Event request submitted successfully!';
             header('Location: php-forms/user-booking.php');

@@ -40,7 +40,7 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    background-color: var(--dark-blue);
+    background-color: #242565;
     color: white;
     padding: 20px;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
@@ -178,6 +178,71 @@ main .request-table h2{
 .table-bordered th,
 .table-bordered td {
     border: 0;
+}
+
+/* new added */
+.dashboard-section {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+    padding: 2rem 1.5rem;
+    margin-bottom: 2.5rem;
+    transition: box-shadow 0.2s;
+}
+.dashboard-section h2 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1.2rem;
+    color: #222;
+    letter-spacing: 0.02em;
+}
+.dashboard-table {
+    background: none;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.dashboard-table th, .dashboard-table td {
+    vertical-align: middle;
+    font-size: 0.98rem;
+    border: none;
+    background: none;
+}
+.dashboard-table th {
+    background: #242565;
+    color: #ffffff;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    border-bottom: 2px solid #e9ecef;
+}
+.dashboard-table tr {
+    border-bottom: 1px solid #f0f0f0;
+    transition: background 0.15s;
+}
+.dashboard-table tbody tr:hover {
+    background: #f5faff;
+}
+.dashboard-table img {
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+}
+.dashboard-table .btn {
+    font-size: 0.92rem;
+    padding: 0.3rem 0.8rem;
+}
+.dashboard-table .text-muted {
+    color: #b0b0b0 !important;
+}
+.dashboard-table .badge {
+    font-size: 0.85em;
+    padding: 0.35em 0.7em;
+    border-radius: 6px;
+}
+.dashboard-table .badge-pending { background: #e3f0ff; color: #1976d2; }
+.dashboard-table .badge-approved { background: #e8f5e9; color: #388e3c; }
+.dashboard-table .badge-rejected { background: #ffebee; color: #d32f2f; }
+@media (max-width: 768px) {
+    .dashboard-section { padding: 1rem 0.5rem; }
+    .dashboard-table th, .dashboard-table td { font-size: 0.93rem; }
 }
 
 /* Responsive Design */

@@ -29,47 +29,96 @@ $stmtAttendees->execute([$event_id]);
 $attendees = $stmtAttendees->fetchAll(PDO::FETCH_ASSOC);
 
 // Create a new MPDF instance
-$mpdf = new \Mpdf\Mpdf();
+$mpdf = new \Mpdf\Mpdf([
+    'margin_left' => 15,
+    'margin_right' => 15,
+    'margin_top' => 35,
+    'margin_bottom' => 20,
+    'margin_header' => 10,
+    'margin_footer' => 10
+]);
 
 // Set document properties
 $mpdf->SetTitle("Attendance List for " . $eventName);
 $mpdf->SetAuthor("BukSU Events");
 
+// Header and Footer
+$mpdf->SetHTMLHeader('
+    <div style="text-align: left; font-weight: bold; font-size: 14pt; color: #2c3e50;">
+        <img src="images/black.png" height="40" style="vertical-align:middle; margin-right:10px;">
+        Bukidnon State University
+    </div>
+    <div style="border-bottom: 2px solid #2980b9; margin-top: 5px;"></div>
+', 'O');
+
+$mpdf->SetHTMLFooter('
+    <div style="border-top: 1px solid #2980b9; font-size:10pt; color:#888; text-align:right;">
+        Page {PAGENO} of {nbpg}
+    </div>
+');
+
 // Add content to the PDF
-$html = '<h1>Attendance List for: ' . htmlspecialchars($eventName) . '</h1>';
+$html = '
+<style>
+    body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12pt; color: #222; }
+    h1 { text-align: center; margin-bottom: 10px; color: #2980b9; font-size: 22pt; }
+    .subtitle { text-align: center; font-size: 13pt; color: #555; margin-bottom: 25px; }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+    th, td { border: 1px solid #2980b9; padding: 7px 10px; }
+    th { background: #2980b9; color: #fff; font-weight: bold; font-size: 12pt; }
+    tr:nth-child(even) td { background: #f4f8fb; }
+    tr:hover td { background: #eaf2fb; }
+    .footer { text-align: right; font-size: 10pt; color: #888; margin-top: 20px; }
+    .signature { margin-top: 40px; }
+    .signature .label { font-size: 11pt; color: #555; }
+    .signature .line { border-bottom: 1px solid #888; width: 250px; margin-top: 20px; }
+</style>
+<h1>Attendance List</h1>
+<div class="subtitle">Event: <b>' . htmlspecialchars($eventName) . '</b></div>
+';
 
 if (!empty($attendees)) {
-    $html .= '<table style="width:100%; border-collapse: collapse;">
-                <thead>
-                    <tr>
-                        <th style="border: 1px solid #000; padding: 8px; text-align: left;">#</th>
-                        <th style="border: 1px solid #000; padding: 8px; text-align: left;">First Name</th>
-                        <th style="border: 1px solid #000; padding: 8px; text-align: left;">Last Name</th>
-                        <th style="border: 1px solid #000; padding: 8px; text-align: left;">Email</th>
-                        <th style="border: 1px solid #000; padding: 8px; text-align: left;">Roles</th>
-                        <th style="border: 1px solid #000; padding: 8px; text-align: left;">Contact No</th>
-                        <th style="border: 1px solid #000; padding: 8px; text-align: left;">Attendance Date & Time</th>
-                        <th style="border: 1px solid #000; padding: 8px; text-align: left;">Status</th>
-                    </tr>
-                </thead>
-                <p>_____________</p>
-                <tbody>';
+    $html .= '
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Roles</th>
+                <th>Contact No</th>
+                <th>Attendance Date & Time</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>';
     foreach ($attendees as $index => $attendee) {
         $html .= '<tr>
-                    <td style="border: 1px solid #000; padding: 8px;">' . ($index + 1) . '</td>
-                    <td style="border: 1px solid #000; padding: 8px;">' . htmlspecialchars($attendee['firstname']) . '</td>
-                    <td style="border: 1px solid #000; padding: 8px;">' . htmlspecialchars($attendee['lastname']) . '</td>
-                    <td style="border: 1px solid #000; padding: 8px;">' . htmlspecialchars($attendee['email']) . '</td>
-                    <td style="border: 1px solid #000; padding: 8px;">' . htmlspecialchars($attendee['roles']) . '</td>
-                    <td style="border: 1px solid #000; padding: 8px;">' . htmlspecialchars($attendee['contact_no']) . '</td>
-                    <td style="border: 1px solid #000; padding: 8px;">' . htmlspecialchars($attendee['attendance_date']) . '</td>
-                    <td style="border: 1px solid #000; padding: 8px;">' . htmlspecialchars(ucfirst($attendee['attendance_status'])) . '</td>
-                </tr>';
+            <td>' . ($index + 1) . '</td>
+            <td>' . htmlspecialchars($attendee['firstname']) . '</td>
+            <td>' . htmlspecialchars($attendee['lastname']) . '</td>
+            <td>' . htmlspecialchars($attendee['roles']) . '</td>
+            <td>' . htmlspecialchars($attendee['contact_no']) . '</td>
+            <td>' . htmlspecialchars(date('M d, Y h:i A', strtotime($attendee['attendance_date']))) . '</td>
+            <td>' . htmlspecialchars(ucfirst($attendee['attendance_status'])) . '</td>
+        </tr>';
     }
     $html .= '</tbody></table>';
 } else {
-    $html .= '<p>No attendees recorded for this event.</p>';
+    $html .= '<p style="text-align:center; color:#c0392b; font-size:13pt;">No attendees recorded for this event.</p>';
 }
+
+// Signature section
+$html .= '
+<div class="signature">
+    <div class="label">Prepared by:</div>
+    <div class="line"></div>
+    <div class="label" style="margin-top:5px;">Signature over printed name</div>
+</div>
+';
+
+// Footer
+$html .= '<div class="footer">Generated on: ' . date('F d, Y h:i A') . '</div>';
 
 // Write the HTML to the PDF
 $mpdf->WriteHTML($html);

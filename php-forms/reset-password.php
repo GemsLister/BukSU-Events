@@ -2,34 +2,38 @@
 session_start(); 
 
 if (!isset($_SESSION['reset_email']) || !isset($_SESSION['reset_code_verified']) || !$_SESSION['reset_code_verified']) {
-    header("Location: php-forms/enter-code.php");
+    header("Location: ../php-forms/enter-code.php");
     exit();
 }
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
-    require 'db.php';
+    require '../db.php';
     $new_password = $_POST['new_password'];
     $confirm_password = $_POST['confirm_password'];
-    
-    if($new_password === $confirm_password) {
-        $hashedPassword = password_hash($new_password, PASSWORD_DEFAULT); // hash the new password 
 
-        // update the password in the database
-        $stmt = $pdo->prepare("UPDATE users SET password = ? WHERE email = ?");
-        $stmt->execute([$hashedPassword, $_SESSION['reset_email']]); // call the database to update the password
-
-        // unset the session variables
-        unset($_SESSION['reset_email']); // clear the email session variable
-        unset($_SESSION['reset_code_verified']); // clear the reset code verification flag
-        $_SESSION['success'] = "Password reset successfully.";
-        
-        // go back to sign-in page
-        header("Location: php-forms/sign-in.php");
+    // Validate password: at least 8 chars, at least 1 letter, at least 1 special character
+    if (
+        strlen($new_password) < 8 ||
+        !preg_match('/[A-Za-z]/', $new_password) ||
+        !preg_match('/[^A-Za-z0-9]/', $new_password)
+    ) {
+        $_SESSION['error'] = "Password must be at least 8 characters, contain at least one letter and one special character.";
+        header("Location: ../php-forms/reset-password.php");
         exit();
     }
-    else{
+
+    if($new_password === $confirm_password) {
+        $hashedPassword = password_hash($new_password, PASSWORD_DEFAULT);
+        $stmt = $pdo->prepare("UPDATE users SET password = ? WHERE email = ?");
+        $stmt->execute([$hashedPassword, $_SESSION['reset_email']]);
+        unset($_SESSION['reset_email']);
+        unset($_SESSION['reset_code_verified']);
+        $_SESSION['success'] = "Password reset successfully.";
+        header("Location: ../php-forms/sign-in.php");
+        exit();
+    } else {
         $_SESSION['error'] = "Passwords do not match.";
-        header("Location: php-forms/reset-password.php");
+        header("Location: ../php-forms/reset-password.php");
         exit();
     }
 }
@@ -47,7 +51,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 <body>
     <main>
-        <form action="../sign-up-validate.php" method="POST" class="d-lg-none">
+        <form action="../php-forms/reset-password.php" method="POST" class="d-lg-none">
             <div class="title">
                 <h1>Enter new password</h1>
                 <!-- message if email address already exists -->
@@ -79,7 +83,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     </main>
 
     <aside>
-        <form action="../sign-up-validate.php" method="POST" class="d-none d-lg-flex">
+        <form action="../php-forms/reset-password.php" method="POST" class="d-none d-lg-flex">
             <div class="title">
                 <h1>Enter new password</h1>
                 <!-- message if email address already exists -->

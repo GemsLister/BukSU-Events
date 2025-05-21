@@ -17,7 +17,7 @@ session_start();
         <form action="../sign-up-validate.php" method="POST" class="d-lg-none">
             <div class="title">
                 <h1>Sign up</h1>
-                <p>Already have an account? <strong><a href="sign-in.php">Sign in</a></strong></p>
+                <p>Already have an account? <strong><a href="sign-in.php">Sign in</a> </strong></p>
                 <!-- message if email address already exists -->
                 <?php if(isset($_SESSION['error'])): ?>
                     <h5 class="text-light">
@@ -41,29 +41,32 @@ session_start();
                 <input type="tel" class="form-control" placeholder="Contact number" name="contact_no" aria-label="Contact number" aria-describedby="contact-addon1" required>
                 
                 <!-- for roles -->
-                <div class="roles d-flex gap-4">
-                    <div class="form-check">
-                        <input class="form-check-input w-25" type="radio" value="student" id="student_role" name="roles">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            Student
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input w-25" type="radio" value="faculty" id="faculty_role" name="roles">
-                        <label class="form-check-label" for="flexCheckChecked">
-                            Faculty
-                        </label>
+                <div class="roles d-flex flex-column gap-2 mb-2">
+                    <span class="mb-1">Are you a <strong>student</strong> or <strong>faculty</strong>?</span>
+                    <div class="d-flex gap-4">
+                        <div class="form-check">
+                            <input class="form-check-input w-25" type="radio" value="student" id="student_role" name="roles">
+                            <label class="form-check-label" for="student_role">
+                                Student
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input w-25" type="radio" value="faculty" id="faculty_role" name="roles">
+                            <label class="form-check-label" for="faculty_role">
+                                Faculty
+                            </label>
+                        </div>
                     </div>
                 </div>
                 <!-- for email-address -->
                 <input type="email" class="form-control" placeholder="Email address" name="email" aria-label="Email address" aria-describedby="email-addon1" required>
 
-                <!-- for password -->
-                <input type="password" class="form-control" placeholder="Password" name="password" aria-label="Password" aria-describedby="password-addon1" minlength="8" maxlength="15" required>
+                 <!-- for password -->
+                <input type="password" class="form-control" placeholder="Password" name="password" aria-label="Password" aria-describedby="password-addon1" minlength="8" maxlength="15" pattern="^(?=.*[A-Za-z])(?=.*[\W_]).{8,15}$" title="Password must be 8-15 characters, contain at least one letter and one special character." required>
             
                 <!-- confirm password -->
-                <input type="password" class="form-control" placeholder="Confirm Password" name="confirm_password" minlength="8" maxlength="15" required>
-                <button type="submit" method="POST" id=submitBtn class="btn btn-primary w-100 mt-3">Sign up</button>
+                <input type="password" class="form-control" placeholder="Confirm Password" name="confirm_password" minlength="8" maxlength="15" pattern="^(?=.*[A-Za-z])(?=.*[\W_]).{8,15}$" title="Password must be 8-15 characters, contain at least a letter and one special character." required>
+                <button type="submit" method="POST" id="submitBtn" class="btn btn-primary w-100 mt-3">Sign up</button>
             </div>
         </form>
 
@@ -74,6 +77,12 @@ session_start();
                 <p>Copyright &copy; 2025 Balolong Inc.</p>
             </div>
         </figure>
+        <!-- Back Button  -->
+        <div class="d-none d-lg-flex justify-content-center mb-3">
+            <a href="../land-page.php" class="btn btn-primary">
+                <i class="fas fa-arrow-left"></i> Back
+            </a>
+        </div>
     </main>
 
     <aside>
@@ -104,29 +113,38 @@ session_start();
                 <input type="tel" class="form-control" placeholder="Contact number" name="contact_no" aria-label="Contact number" aria-describedby="contact-addon1" required>
                 
                 <!-- for roles -->
-                <div class="roles d-flex gap-4">
-                    <div class="form-check">
-                        <input class="form-check-input w-25" type="radio" value="student" id="student_role" name="roles">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            Student
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input w-25" type="radio" value="faculty" id="faculty_role" name="roles">
-                        <label class="form-check-label" for="flexCheckChecked">
-                            Faculty
-                        </label>
+                <div class="roles d-flex flex-column gap-2 mb-2">
+                    <span class="mb-1">Are you a student or faculty?</span>
+                    <div class="d-flex gap-4">
+                        <div class="form-check">
+                            <input class="form-check-input w-25" type="radio" value="student" id="student_role" name="roles">
+                            <label class="form-check-label" for="student_role">
+                                Student
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input w-25" type="radio" value="faculty" id="faculty_role" name="roles">
+                            <label class="form-check-label" for="faculty_role">
+                                Faculty
+                            </label>
+                        </div>
                     </div>
                 </div>
                 <!-- for email-address -->
-                <input type="email" class="form-control" placeholder="Email address" name="email" aria-label="Email address" aria-describedby="email-addon1" required>
+                <input type="email" class="form-control" placeholder="Institutional Email address" name="email" aria-label="Email address" aria-describedby="email-addon1" required>
+                <?php if(isset($_SESSION['error'])): ?>
+                    <div class="alert alert-danger mt-2 py-1 px-2">
+                        Only institutional emails are allowed. Students: *@student.buksu.edu.ph, Faculty: *@buksu.edu.ph
+                        <?php unset($_SESSION['error']); ?>
+                    </div>
+                <?php endif; ?>
 
                 <!-- for password -->
-                <input type="password" class="form-control" placeholder="Password" name="password" aria-label="Password" aria-describedby="password-addon1" minlength="8" maxlength="15" required>
+                <input type="password" class="form-control" placeholder="Password" name="password" aria-label="Password" aria-describedby="password-addon1" minlength="8" maxlength="15" pattern="^(?=.*[A-Za-z])(?=.*[\W_]).{8,15}$" title="Password must be 8-15 characters, contain at least one letter and one special character." required>
             
                 <!-- confirm password -->
-                <input type="password" class="form-control" placeholder="Confirm Password" name="confirm_password" minlength="8" maxlength="15" required>
-                <button type="submit" method="POST" id=submitBtn class="btn btn-primary w-100 mt-3">Sign up</button>
+                <input type="password" class="form-control" placeholder="Confirm Password" name="confirm_password" minlength="8" maxlength="15" pattern="^(?=.*[A-Za-z])(?=.*[\W_]).{8,15}$" title="Password must be 8-15 characters, contain at least a letter and one special character." required>
+                <button type="submit" method="POST" id="submitBtn" class="btn btn-primary w-100 mt-3">Sign up</button>
             </div>
         </form>
     </aside>

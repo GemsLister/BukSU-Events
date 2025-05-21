@@ -112,7 +112,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                         </h5>
                     <?php elseif (isset($_SESSION['error'])): ?>
                         <h5 class="warning-message">
-                            <?php echo $_SESSION['error']; unset($_SESSION['error']); ?>
+                            <?php echo $_SESSION['error']; ?>
                         </h5>
                     <?php endif; ?>
                 </div>

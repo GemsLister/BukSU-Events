@@ -186,3 +186,10 @@ main .copyrights p{
     color: white;
     font-size: clamp(1rem, 1dvw, 1.5rem);
 }
+
+/* Details */
+.details{
+    background-color: white;
+    height: 200px;
+    width: 100px;
+}

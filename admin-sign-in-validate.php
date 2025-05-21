@@ -10,13 +10,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Basic validation
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $_SESSION['error'] = "Invalid email format.";
-        header("Location: ../BukSU-Events/admin-sign-in.php");
+        header("Location: ../BukSU-Events/php-forms/admin-sign-in.php");
         exit();
     }
 
     if (empty($password)) {
         $_SESSION['error'] = "Password cannot be empty.";
-        header("Location: ../BukSU-Events/admin-sign-in.php");
+        header("Location: ../BukSU-Events/php-forms/admin-sign-in.php");
         exit();
     }
 
@@ -29,14 +29,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // No admin found
         if (!$admin) {
             $_SESSION['error'] = "Invalid email or password.";
-            header("Location: ../BukSU-Events/admin-sign-in.php");
+            header("Location: ../BukSU-Events/php-forms/admin-sign-in.php");
             exit();
         }
 
         // Verify password using password_verify
         if (!password_verify($password, $admin['password'])) {
             $_SESSION['error'] = "Invalid email or password.";
-            header("Location: ../BukSU-Events/admin-sign-in.php");
+            header("Location: ../BukSU-Events/php-forms/admin-sign-in.php");
             exit();
         }
 
@@ -52,6 +52,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 } else {
     // Not POST request
-    header("Location: ../BukSU-Events/admin-sign-in.php");
+    header("Location: ../php-forms/admin-sign-in.php");
     exit();
 }

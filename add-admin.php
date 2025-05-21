@@ -5,8 +5,8 @@
 include 'db.php';
 
 // Admin details
-$admin_email = 'buksuevent123@event.com';
-$admin_password_plain = 'buksueventsadmin';
+$admin_email = 'admin@buksu.edu.ph';
+$admin_password_plain = 'admin123';
 $admin_name = 'BukSU Events Admin';
 $admin_role = 'admin'; // Set the role to 'admin'
 
@@ -16,8 +16,7 @@ if (!filter_var($admin_email, FILTER_VALIDATE_EMAIL)) {
 }
 
 // Generate hashed password
-// $admin_password = password_hash($admin_password_plain, PASSWORD_DEFAULT);
-// echo "Generated Hash: " . $admin_password . "<br>";
+$admin_password = password_hash($admin_password_plain, PASSWORD_DEFAULT);
 
 try {
     // Insert or update the admin account
@@ -40,4 +39,5 @@ try {
     error_log("Error creating or updating admin account: " . $e->getMessage());
     echo "Error: " . $e->getMessage();
 }
+
 ?>
