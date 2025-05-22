@@ -50,49 +50,48 @@ BEMS replaces the traditional manual process of posting events and handling venu
 ## 🗃️ Database Schema Overview
 
 The system uses MySQL with the following primary tables:
-users
-Stores all registered students and faculty.
-- user_id, firstname, lastname, email, password, roles, etc.
-admin
-Admin credentials with limited to full access privileges.
-events
-Holds event details submitted by users.
-- event_id, user_id, event_name, description, venue, status, image_path, etc.
-attendees
-Stores RSVP responses and attendance status.
-- attendee_id, event_id, user_id, attendance_status, roles, etc.
 
-Each table includes relationships via foreign keys (e.g., event_id, user_id) and is normalized to avoid redundancy.
+| Table     | Description                              | Key Columns                                             |
+|-----------|------------------------------------------|---------------------------------------------------------|
+| `users`   | Stores all registered students and faculty| `user_id`, `firstname`, `lastname`, `email`, `password`, `roles`, etc. |
+| `admin`   | Admin credentials with access privileges  | `admin_id`, `email`, `password`, `roles`, etc.          |
+| `events`  | Holds event details submitted by users    | `event_id`, `user_id`, `event_name`, `description`, `venue`, `status`, `image_path`, etc. |
+| `attendees`| Stores RSVP responses and attendance     | `attendee_id`, `event_id`, `user_id`, `attendance_status`, `roles`, etc. |
+
+Each table includes relationships via foreign keys (e.g., `event_id`, `user_id`) and is normalized to avoid redundancy.
 
 ---
 
 ## 🔐 API Routes Used
 
-1. **Google reCAPTCHA v2**
-Used on login forms to verify human users and prevent spam.
-2. **Google OAuth 2.0****
-Allows users to log in using their Google accounts securely and easily.
+1. **Google reCAPTCHA v2**  
+    Used on login forms to verify human users and prevent spam.
+2. **Google OAuth 2.0**  
+    Allows users to log in securely using their Google accounts.
 
 ---
 
 ## 💾 Installation Instructions
 
-1. - Open your XAMPP Control Panel and start Apache and MySQL.
-2. - Extract the downloaded source code zip file.
-3. - Copy the extracted source code folder and paste it into XAMPP's htdocs directory.
-4. - Open a web browser and navigate to PHPMyAdmin (http://localhost/phpmyadmin).
-5. - Create a new database named buksu_events.
-6. - Import the provided SQL file (buksu_events.sql) from the database folder.
-7. - Access BukSU Event Management System:
-8. - Student & Faculty Side: http://localhost/BukSU-Events/
-9. - Admin Side: http://localhost/BukSU-Events/php-forms/admin-sign-in.php
+1. Open your XAMPP Control Panel and start Apache and MySQL.
+2. Extract the downloaded source code zip file.
+3. Copy the extracted source code folder into XAMPP's `htdocs` directory.
+4. Open a web browser and navigate to [phpMyAdmin](http://localhost/phpmyadmin).
+5. Create a new database named `buksu_events`.
+6. Import the provided SQL file (`buksu_events.sql`) from the `database` folder.
+7. Access BukSU Event Management System:
+    - **Student & Faculty Side:** [http://localhost/BukSU-Events/](http://localhost/BukSU-Events/)
+    - **Admin Side:** [http://localhost/BukSU-Events/php-forms/admin-sign-in.php](http://localhost/BukSU-Events/php-forms/admin-sign-in.php)
 
+---
 
 ## 🔑 Default User Credentials
-| Role    | Username                     | Password   | 
-| Admin   | admin@buksu.edu.ph           | admin123   | 
-| Faculty | faculty@buksu.edu.ph         | faculty123 | 
-| Student | student@student.buksu.edu.ph | student123 | 
+
+| Role    | Username                     | Password    |
+|---------|------------------------------|-------------|
+| Admin   | admin@buksu.edu.ph           | admin123    |
+| Faculty | faculty@buksu.edu.ph         | faculty123  |
+| Student | student@student.buksu.edu.ph | student123  |
 
 
 🎉 Thank You! We hope BukSU Event Management System (BEMS) makes event management effortless and more engaging for Bukidnon State University. 
