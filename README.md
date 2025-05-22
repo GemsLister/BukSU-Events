@@ -70,7 +70,68 @@ BEMS replaces the traditional manual process of posting events and handling venu
 🎉 Thank You! We hope BukSU Event Management System (BEMS) makes event management effortless and more engaging for Bukidnon State University. 
 If you have suggestions for improvements or encounter any issues, feel free to contribute and collaborate
 
+📸 System Screenshots
 
+
+### 🏠 Landing Page
+
+![Landing Page](/screenshots/landing-page1.png)
+
+### 🎓 Browse Courses
+
+![Browse Courses](public/screenshots/browse-courses.png)
+
+### 📖 View Course
+
+![View Course](public/screenshots/view-course.png)
+
+### 🧑‍🏫 Take Course
+
+![Take Course](public/screenshots/take-course.png)
+
+### 🛠️ Create Course
+
+![Create Course](public/screenshots/create-course.png)
+
+### 📝 Edit Course
+
+![Edit Course](public/screenshots/edit-course.png)
+
+### 📚 Manage Course
+
+![Manage Course](public/screenshots/manage-course.png)
+
+### 🧮 Course Quizzes
+
+![Course Quizzes](public/screenshots/course-quizzes.png)
+
+### 📋 Learner Submissions (Quiz)
+
+![Quiz Submissions](public/screenshots/course-quiz-learners-submissions.png)
+
+### 📩 Learner Submissions (Course)
+
+![Course Submissions](public/screenshots/learner-course-submissions.png)
+
+### 👨‍🎓 Course Learners
+
+![Course Learners](public/screenshots/course-learners.png)
+
+### 📅 Create Booking
+
+![Create Booking](public/screenshots/create-booking.png)
+
+### 📆 Manage Bookings
+
+![Manage Bookings](public/screenshots/manage-bookings.png)
+
+### 👤 Learner Dashboard
+
+![Learner Dashboard](public/screenshots/learner-dashboard.png)
+
+### ⚙️ Update Profile
+
+![Update Profile](public/screenshots/update-profile.png)
 
 
 
