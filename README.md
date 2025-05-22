@@ -50,15 +50,15 @@ BEMS replaces the traditional manual process of posting events and handling venu
 ## 🗃️ Database Schema Overview
 
 The system uses MySQL with the following primary tables:
-**users***
+users
 Stores all registered students and faculty.
 - user_id, firstname, lastname, email, password, roles, etc.
-**admin**
+admin
 Admin credentials with limited to full access privileges.
-**events**
+events
 Holds event details submitted by users.
 - event_id, user_id, event_name, description, venue, status, image_path, etc.
-**attendees**
+attendees
 Stores RSVP responses and attendance status.
 - attendee_id, event_id, user_id, attendance_status, roles, etc.
 
@@ -116,7 +116,7 @@ If you have suggestions for improvements or encounter any issues, feel free to c
 
 ### 📅 Student Events
 
-![Student Events](/screenshots/student-events.png)
+![Student Events](/screenshots/Student-events.png)
 
 ### 🗂️ Student Dashboard (Registered Events)
 
