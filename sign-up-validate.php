@@ -43,15 +43,18 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
     $stmt = $pdo -> prepare("INSERT INTO users (firstname, lastname, contact_no, roles, email, password) VALUES (?, ?, ?,?, ?, ?)");
     
-
     if($stmt -> execute([$first_name, $last_name, $contact_no, $roles, $email, $hashed_password])){
         $_SESSION['success'] = "Sign up successful!";
-        header("Location: php-forms/sign-in.php");
-        exit();    
+        if ($roles === 'faculty') {
+            header("Location: php-forms/faculty-dashboard-sign-in.php");
+            exit();
+        } else if ($roles === 'student') {
+            header("Location: php-forms/student-dashboard-sign-in.php");
+            exit();
+        } else {
+            echo ('There was an error in the query. Please try again later.');
+            exit();
+        }
     }
-    else{
-        echo ('There was an error in the query. Please try again later.');
-        exit();
-    }
- }
+}
 ?>
