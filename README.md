@@ -47,6 +47,34 @@ BEMS replaces the traditional manual process of posting events and handling venu
 
 ---
 
+## 🗃️ Database Schema Overview
+
+The system uses MySQL with the following primary tables:
+**users***
+Stores all registered students and faculty.
+- user_id, firstname, lastname, email, password, roles, etc.
+**admin**
+Admin credentials with limited to full access privileges.
+**events**
+Holds event details submitted by users.
+- event_id, user_id, event_name, description, venue, status, image_path, etc.
+**attendees**
+Stores RSVP responses and attendance status.
+- attendee_id, event_id, user_id, attendance_status, roles, etc.
+
+Each table includes relationships via foreign keys (e.g., event_id, user_id) and is normalized to avoid redundancy.
+
+---
+
+## 🔐 API Routes Used
+
+1. **Google reCAPTCHA v2**
+Used on login forms to verify human users and prevent spam.
+2. **Google OAuth 2.0****
+Allows users to log in using their Google accounts securely and easily.
+
+---
+
 ## 💾 Installation Instructions
 
 1. - Open your XAMPP Control Panel and start Apache and MySQL.
@@ -60,7 +88,7 @@ BEMS replaces the traditional manual process of posting events and handling venu
 9. - Admin Side: http://localhost/BukSU-Events/php-forms/admin-sign-in.php
 
 
-🔑 Default User Credentials
+## 🔑 Default User Credentials
 | Role    | Username                     | Password   | 
 | Admin   | admin@buksu.edu.ph           | admin123   | 
 | Faculty | faculty@buksu.edu.ph         | faculty123 | 
@@ -70,68 +98,83 @@ BEMS replaces the traditional manual process of posting events and handling venu
 🎉 Thank You! We hope BukSU Event Management System (BEMS) makes event management effortless and more engaging for Bukidnon State University. 
 If you have suggestions for improvements or encounter any issues, feel free to contribute and collaborate
 
-📸 System Screenshots
-
+## 📸 System Screenshots
 
 ### 🏠 Landing Page
 
-![Landing Page](/screenshots/landing-page1.png)
+![Landing Page 1](/screenshots/land-page-1.png)
+![Landing Page 2](/screenshots/land-page-2.png)
+![Landing Page 3](/screenshots/land-page-3.png)
 
-### 🎓 Browse Courses
+### 📝 Sign Up
 
-![Browse Courses](public/screenshots/browse-courses.png)
+![Sign Up](/screenshots/sign-up.png)
 
-### 📖 View Course
+### 👨‍🎓 Student Sign In
 
-![View Course](public/screenshots/view-course.png)
+![Student Sign In](/screenshots/student-sign-in.png)
 
-### 🧑‍🏫 Take Course
+### 📅 Student Events
 
-![Take Course](public/screenshots/take-course.png)
+![Student Events](/screenshots/student-events.png)
 
-### 🛠️ Create Course
+### 🗂️ Student Dashboard (Registered Events)
 
-![Create Course](public/screenshots/create-course.png)
+![Student Dashboard Registered Events](/screenshots/student-dashboard-registered-events.png)
 
-### 📝 Edit Course
+### ⚙️ Edit Profile
 
-![Edit Course](public/screenshots/edit-course.png)
+![Edit Profile](/screenshots/edit-profile.png)
 
-### 📚 Manage Course
+### 👨‍🏫 Faculty Sign In
 
-![Manage Course](public/screenshots/manage-course.png)
+![Faculty Sign In](/screenshots/faculty-sign-in.png)
 
-### 🧮 Course Quizzes
+### 📅 Faculty Events
 
-![Course Quizzes](public/screenshots/course-quizzes.png)
+![Faculty Events](/screenshots/faculty-events.png)
 
-### 📋 Learner Submissions (Quiz)
+### 🗂️ Faculty Dashboard
 
-![Quiz Submissions](public/screenshots/course-quiz-learners-submissions.png)
+![Faculty Dashboard 1](/screenshots/faculty-dash-1.png)
+![Faculty Dashboard 2](/screenshots/faculty-dash-2.png)
 
-### 📩 Learner Submissions (Course)
+### 📋 Faculty Registered Events
 
-![Course Submissions](public/screenshots/learner-course-submissions.png)
+![Faculty Registered Events](/screenshots/faculty-registered-events.png)
 
-### 👨‍🎓 Course Learners
+### 📝 Book an Event
 
-![Course Learners](public/screenshots/course-learners.png)
+![Book an Event](/screenshots/book-event.png)
 
-### 📅 Create Booking
+### 🛡️ Admin Sign In
 
-![Create Booking](public/screenshots/create-booking.png)
+![Admin Sign In](/screenshots/admin-sign-in.png)
 
-### 📆 Manage Bookings
+### 🖥️ Admin Dashboard
 
-![Manage Bookings](public/screenshots/manage-bookings.png)
+![Admin Dashboard 1](/screenshots/admin-dash-1.png)
+![Admin Dashboard 2](/screenshots/admin-dash-2.png)
 
-### 👤 Learner Dashboard
+### ✅ Approve/Reject Event
 
-![Learner Dashboard](public/screenshots/learner-dashboard.png)
+![Approve/Reject Event](/screenshots/approve-reject-event.png)
 
-### ⚙️ Update Profile
+### ✏️ Edit Event
 
-![Update Profile](public/screenshots/update-profile.png)
+![Edit Event](/screenshots/edit-event.png)
+
+### ⏸️ Postpone Event
+
+![Postpone Event](/screenshots/pospone-event.png)
+
+### 👥 Event Attendees
+
+![Event Attendees](/screenshots/event-attendees.png)
+
+### 🖨️ Print Attendance
+
+![Print Attendance](/screenshots/print-attendance.png)
 
 
 
